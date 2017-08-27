@@ -1,4 +1,4 @@
-Instagram-like app using react-redux.
+## Instagram-like app using react-redux.
 
 Done from: 
 https://courses.wesbos.com/account
