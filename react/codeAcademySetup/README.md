@@ -1,4 +1,4 @@
-Manual setup React app tutorial
+## Manual setup React app tutorial
 Done from https://www.codecademy.com/articles/react-setup-i
 ```
 npm init

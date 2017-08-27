@@ -1,1 +1,2 @@
-## Usage of react-images from https://github.com/jossmac/react-images
+## Usage of react-images 
+Done from https://github.com/jossmac/react-images
