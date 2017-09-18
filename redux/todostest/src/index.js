@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Test from './container';
+
 import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux'
@@ -12,7 +14,7 @@ let store = createStore(todoApp)
 
 ReactDOM.render(
 	<Provider store={store}>
-	<App />
+	<Test />
 	</Provider>,
 	document.getElementById('root'));
 registerServiceWorker();
