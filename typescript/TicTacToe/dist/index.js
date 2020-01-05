@@ -12,11 +12,11 @@ var qClassElements = document.getElementsByClassName('q');
 var qNumId = function (qEl) {
     return parseInt(qEl.replace('q', ''));
 };
-var emptyQs = function (htmlCollection) {
+var emptyQs = function () {
     var elementsArray = [];
-    for (var i = 0; i < htmlCollection.length; i++) {
-        if (htmlCollection[i].innerHTML === '') {
-            elementsArray.push(htmlCollection[i]);
+    for (var i = 0; i < qClassElements.length; i++) {
+        if (qClassElements[i].innerHTML === '') {
+            elementsArray.push(qClassElements[i]);
         }
     }
     return elementsArray;
@@ -39,14 +39,15 @@ var setTurn = function (index, letter) {
     qClassElements[index].innerHTML = letter;
 };
 var opponentChoice = function () {
-    return 0;
+    var element = emptyQs()[Math.floor(Math.random() * emptyQs().length)];
+    return qNumId(element.id);
 };
 var opponentTurn = function () {
     disableListeners();
     setTimeout(function () {
         setTurn(opponentChoice(), 'O');
         enableListeners();
-    }, 2000);
+    }, 500);
 };
 var clickFn = function (event) {
     console.log("clickFn: ", event.target);

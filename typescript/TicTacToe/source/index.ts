@@ -15,11 +15,11 @@ const qNumId = (qEl: string): number => {
     return parseInt(qEl.replace('q', ''));
 };
 
-const emptyQs = (htmlCollection: HTMLCollection): Element[] => {
+const emptyQs = (): Element[] => {
     let elementsArray: Array<Element> = [];
-    for (let i = 0; i < htmlCollection.length; i++) {
-        if (htmlCollection[i].innerHTML === '') {
-            elementsArray.push(htmlCollection[i]);
+    for (let i = 0; i < qClassElements.length; i++) {
+        if (qClassElements[i].innerHTML === '') {
+            elementsArray.push(qClassElements[i]);
         }
     }
     return elementsArray;
@@ -43,8 +43,10 @@ const isAllSame = (htmlCollection: HTMLCollection): boolean => {
 const setTurn = (index: number, letter: string) => {
     qClassElements[index].innerHTML = letter;
 };
+
 let opponentChoice = (): number => {
-    return 0;
+    let element = emptyQs()[Math.floor(Math.random() * emptyQs().length)];
+    return qNumId(element.id);
 };
 
 let opponentTurn = () => {
@@ -52,7 +54,7 @@ let opponentTurn = () => {
     setTimeout(() => {
         setTurn(opponentChoice(), 'O');
         enableListeners();
-    }, 2000);
+    }, 500);
 };
 
 let clickFn = (event: Event) => {
