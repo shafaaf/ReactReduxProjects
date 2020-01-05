@@ -40,10 +40,6 @@ const isAllSame = (elementsArray: Element[]): boolean => {
     return true;
 };
 
-// const endGame = (winningSequence: Element[]) => {
-//
-// };
-
 const checkForVictory = () => {
     let victory = false;
     for (let i = 0; i < winningCombos.length; i++) {
@@ -54,7 +50,6 @@ const checkForVictory = () => {
         ];
         if (isAllSame(sequence)) {
             victory = true;
-            //endGame(sequence);
             console.log("endGame: ", sequence);
             break;
         }
@@ -84,7 +79,12 @@ let opponentTurn = () => {
 
 let clickFn = (event: Event) => {
     console.log("clickFn: ", event.target);
-    let id = (event.target as HTMLElement).id;
+
+    let element = event.target as HTMLElement;
+    let id = element.id;
+    if ((element.innerText == 'X') || (element.innerText == 'O')) {
+        return;
+    }
     setTurn(qNumId(id), 'X');
     if(!checkForVictory()) {
         opponentTurn();

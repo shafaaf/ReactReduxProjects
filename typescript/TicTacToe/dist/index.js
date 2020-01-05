@@ -35,9 +35,6 @@ var isAllSame = function (elementsArray) {
     }
     return true;
 };
-// const endGame = (winningSequence: Element[]) => {
-//
-// };
 var checkForVictory = function () {
     var victory = false;
     for (var i = 0; i < winningCombos.length; i++) {
@@ -48,7 +45,6 @@ var checkForVictory = function () {
         ];
         if (isAllSame(sequence)) {
             victory = true;
-            //endGame(sequence);
             console.log("endGame: ", sequence);
             break;
         }
@@ -75,7 +71,11 @@ var opponentTurn = function () {
 };
 var clickFn = function (event) {
     console.log("clickFn: ", event.target);
-    var id = event.target.id;
+    var element = event.target;
+    var id = element.id;
+    if ((element.innerText == 'X') || (element.innerText == 'O')) {
+        return;
+    }
     setTurn(qNumId(id), 'X');
     if (!checkForVictory()) {
         opponentTurn();
