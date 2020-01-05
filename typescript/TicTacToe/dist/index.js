@@ -35,8 +35,13 @@ var isAllSame = function (elementsArray) {
     }
     return true;
 };
+var endGame = function (sequence) {
+    console.log("endGame: ", sequence);
+    for (var i = 0; i < sequence.length; i++) {
+        sequence[i].classList.add('winner');
+    }
+};
 var checkForVictory = function () {
-    var victory = false;
     for (var i = 0; i < winningCombos.length; i++) {
         var sequence = [
             qClassElements[winningCombos[i][0]],
@@ -44,12 +49,11 @@ var checkForVictory = function () {
             qClassElements[winningCombos[i][2]],
         ];
         if (isAllSame(sequence)) {
-            victory = true;
-            console.log("endGame: ", sequence);
-            break;
+            endGame(sequence);
+            return true;
         }
     }
-    return victory;
+    return false;
 };
 var setTurn = function (index, letter) {
     qClassElements[index].innerHTML = letter;

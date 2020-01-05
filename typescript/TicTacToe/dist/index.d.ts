@@ -3,6 +3,7 @@ declare let qClassElements: HTMLCollectionOf<Element>;
 declare const qNumId: (qEl: string) => number;
 declare const emptyQs: () => Element[];
 declare const isAllSame: (elementsArray: Element[]) => boolean;
+declare const endGame: (sequence: Element[]) => void;
 declare const checkForVictory: () => boolean;
 declare const setTurn: (index: number, letter: string) => void;
 declare let opponentChoice: () => number;

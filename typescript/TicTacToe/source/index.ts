@@ -40,8 +40,14 @@ const isAllSame = (elementsArray: Element[]): boolean => {
     return true;
 };
 
+const endGame = (sequence: Element[]) => {
+    console.log("endGame: ", sequence);
+    for (let i = 0; i < sequence.length; i++) {
+        sequence[i].classList.add('winner');
+    }
+};
+
 const checkForVictory = () => {
-    let victory = false;
     for (let i = 0; i < winningCombos.length; i++) {
         let sequence: Element[] = [
             qClassElements[winningCombos[i][0]],
@@ -49,12 +55,11 @@ const checkForVictory = () => {
             qClassElements[winningCombos[i][2]],
         ];
         if (isAllSame(sequence)) {
-            victory = true;
-            console.log("endGame: ", sequence);
-            break;
+            endGame(sequence);
+            return true;
         }
     }
-    return victory;
+    return false;
 };
 
 const setTurn = (index: number, letter: string) => {
