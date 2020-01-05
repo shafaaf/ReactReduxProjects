@@ -21,19 +21,39 @@ var emptyQs = function () {
     }
     return elementsArray;
 };
-var isAllSame = function (htmlCollection) {
-    if (htmlCollection.length == 0) {
-        return true;
+var isAllSame = function (elementsArray) {
+    if (elementsArray.length == 0) {
+        alert("isAllSame: Something wrong");
     }
-    if (htmlCollection[0].innerHTML === '') {
+    if (elementsArray[0].innerHTML === '') {
         return false;
     }
-    for (var i = 0; i < htmlCollection.length; i++) {
-        if (htmlCollection[i].innerHTML !== htmlCollection[0].innerHTML) {
+    for (var i = 0; i < elementsArray.length; i++) {
+        if (elementsArray[i].innerHTML !== elementsArray[0].innerHTML) {
             return false;
         }
     }
     return true;
+};
+// const endGame = (winningSequence: Element[]) => {
+//
+// };
+var checkForVictory = function () {
+    var victory = false;
+    for (var i = 0; i < winningCombos.length; i++) {
+        var sequence = [
+            qClassElements[winningCombos[i][0]],
+            qClassElements[winningCombos[i][1]],
+            qClassElements[winningCombos[i][2]],
+        ];
+        if (isAllSame(sequence)) {
+            victory = true;
+            //endGame(sequence);
+            console.log("endGame: ", sequence);
+            break;
+        }
+    }
+    return victory;
 };
 var setTurn = function (index, letter) {
     qClassElements[index].innerHTML = letter;
@@ -46,14 +66,23 @@ var opponentTurn = function () {
     disableListeners();
     setTimeout(function () {
         setTurn(opponentChoice(), 'O');
-        enableListeners();
+        if (checkForVictory()) {
+        }
+        else {
+            enableListeners();
+        }
     }, 500);
 };
 var clickFn = function (event) {
     console.log("clickFn: ", event.target);
     var id = event.target.id;
     setTurn(qNumId(id), 'X');
-    opponentTurn();
+    if (!checkForVictory()) {
+        opponentTurn();
+    }
+    else {
+        disableListeners();
+    }
 };
 var enableListeners = function () {
     for (var i = 0; i < qClassElements.length; i++) {

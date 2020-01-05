@@ -25,19 +25,41 @@ const emptyQs = (): Element[] => {
     return elementsArray;
 };
 
-const isAllSame = (htmlCollection: HTMLCollection): boolean => {
-    if (htmlCollection.length == 0) {
-        return true;
+const isAllSame = (elementsArray: Element[]): boolean => {
+    if (elementsArray.length == 0) {
+        alert("isAllSame: Something wrong");
     }
-    if (htmlCollection[0].innerHTML === '') {
+    if (elementsArray[0].innerHTML === '') {
         return false;
     }
-    for (let i = 0; i < htmlCollection.length; i++) {
-        if (htmlCollection[i].innerHTML !== htmlCollection[0].innerHTML) {
+    for (let i = 0; i < elementsArray.length; i++) {
+        if (elementsArray[i].innerHTML !== elementsArray[0].innerHTML) {
             return false;
         }
     }
     return true;
+};
+
+// const endGame = (winningSequence: Element[]) => {
+//
+// };
+
+const checkForVictory = () => {
+    let victory = false;
+    for (let i = 0; i < winningCombos.length; i++) {
+        let sequence: Element[] = [
+            qClassElements[winningCombos[i][0]],
+            qClassElements[winningCombos[i][1]],
+            qClassElements[winningCombos[i][2]],
+        ];
+        if (isAllSame(sequence)) {
+            victory = true;
+            //endGame(sequence);
+            console.log("endGame: ", sequence);
+            break;
+        }
+    }
+    return victory;
 };
 
 const setTurn = (index: number, letter: string) => {
@@ -53,7 +75,10 @@ let opponentTurn = () => {
     disableListeners();
     setTimeout(() => {
         setTurn(opponentChoice(), 'O');
-        enableListeners();
+        if (checkForVictory()) {
+        } else {
+            enableListeners();
+        }
     }, 500);
 };
 
@@ -61,7 +86,11 @@ let clickFn = (event: Event) => {
     console.log("clickFn: ", event.target);
     let id = (event.target as HTMLElement).id;
     setTurn(qNumId(id), 'X');
-    opponentTurn();
+    if(!checkForVictory()) {
+        opponentTurn();
+    } else {
+        disableListeners();
+    }
 };
 
 const enableListeners = () => {
