@@ -62,6 +62,21 @@ var opponentChoiceRandom = function () {
     var element = emptyQs()[Math.floor(Math.random() * emptyQs().length)];
     return qNumId(element.id);
 };
+var opponentBestMove = function () {
+    var test = convertElementsToBoard();
+};
+var convertElementsToBoard = function () {
+    var board = [];
+    for (var i = 0; i < qClassElements.length; i++) {
+        var firstIndex = Math.floor(i / 3);
+        var secondIndex = i % 3;
+        if (secondIndex == 0) {
+            board[firstIndex] = [];
+        }
+        board[firstIndex][secondIndex] = qClassElements[i].innerHTML;
+    }
+    return board;
+};
 var opponentTurn = function () {
     disableListeners();
     setTimeout(function () {

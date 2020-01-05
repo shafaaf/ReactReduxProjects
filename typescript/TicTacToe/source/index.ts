@@ -71,6 +71,24 @@ let opponentChoiceRandom = (): number => {
     return qNumId(element.id);
 };
 
+let opponentBestMove = () => {
+    let test = convertElementsToBoard();
+};
+
+let convertElementsToBoard = (): String[][] => {
+    let board: String[][] = [];
+    for (let i = 0; i < qClassElements.length; i++) {
+        let firstIndex = Math.floor(i / 3);
+        let secondIndex = i % 3;
+
+        if (secondIndex == 0) {
+            board[firstIndex] = [];
+        }
+        board[firstIndex][secondIndex] = qClassElements[i].innerHTML;
+    }
+    return board;
+};
+
 let opponentTurn = () => {
     disableListeners();
     setTimeout(() => {
