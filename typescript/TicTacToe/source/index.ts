@@ -66,7 +66,7 @@ const setTurn = (index: number, letter: string) => {
     qClassElements[index].innerHTML = letter;
 };
 
-let opponentChoice = (): number => {
+let opponentChoiceRandom = (): number => {
     let element = emptyQs()[Math.floor(Math.random() * emptyQs().length)];
     return qNumId(element.id);
 };
@@ -74,7 +74,7 @@ let opponentChoice = (): number => {
 let opponentTurn = () => {
     disableListeners();
     setTimeout(() => {
-        setTurn(opponentChoice(), 'O');
+        setTurn(opponentChoiceRandom(), 'O');
         if (checkForVictory()) {
         } else {
             enableListeners();
@@ -111,5 +111,3 @@ const disableListeners = () => {
 };
 
 enableListeners();
-
-const a = 3 + 3;

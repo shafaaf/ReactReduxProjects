@@ -58,14 +58,14 @@ var checkForVictory = function () {
 var setTurn = function (index, letter) {
     qClassElements[index].innerHTML = letter;
 };
-var opponentChoice = function () {
+var opponentChoiceRandom = function () {
     var element = emptyQs()[Math.floor(Math.random() * emptyQs().length)];
     return qNumId(element.id);
 };
 var opponentTurn = function () {
     disableListeners();
     setTimeout(function () {
-        setTurn(opponentChoice(), 'O');
+        setTurn(opponentChoiceRandom(), 'O');
         if (checkForVictory()) {
         }
         else {
@@ -99,5 +99,4 @@ var disableListeners = function () {
     }
 };
 enableListeners();
-var a = 3 + 3;
 //# sourceMappingURL=index.js.map
