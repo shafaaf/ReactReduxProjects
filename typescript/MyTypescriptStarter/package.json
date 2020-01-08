@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "clean": "rm -rf node_modules/ && rm -rf coverage/",
+    "build": "tsc -p ./src",
+    "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/*",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
