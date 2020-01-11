@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "tsc -p ./src",
-    "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/*",
+    "build": "npm install && cd src && tsc && cd ../",
+    "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
@@ -18,7 +18,6 @@
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
     "jest": "^24.9.0",
-    "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   },
   "jest": {
