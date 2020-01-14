@@ -1,7 +1,18 @@
 {
-  "extends": "../tsconfig",
+  "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "../dist"
+    "outDir": "../dist",
+    "module": "umd",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": false,
+    "moduleResolution": "node",
+    "strict": true,
+    "allowUnreachableCode": false
   },
   "exclude": [
   ]

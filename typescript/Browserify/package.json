@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/chessboardjs": "^0.3.1",
     "arithmetic": "^1.0.1",
     "chessboardjs": "0.0.1"
   }

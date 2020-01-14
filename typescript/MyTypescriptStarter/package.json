@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "npm install && cd src && tsc && cd ../",
-    "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/",
+    "clean": "sudo rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/",
+    "pretest": "eslint ./src/index.ts",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
@@ -17,6 +18,14 @@
   "devDependencies": {
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "typescript": "^3.7.4"
   },
