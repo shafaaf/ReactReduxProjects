@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm install && cd src && tsc && cd ../",
     "clean": "sudo rm -rf node_modules/ && rm -rf coverage/ && rm -rf dist/",
-    "pretest": "eslint ./src/index.ts",
+    "pretest": "eslint src/*.ts tests/*.ts",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },

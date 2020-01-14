@@ -1,6 +1,7 @@
-export module SmokeTest {
-    // eslint-disable-next-line no-inner-declarations
-    export function HelloWorld() {
-        console.log('Hello World');
-    }
+export function HelloWorld() {
+    console.log('Hello World');
+}
+
+export function HelloName(name: string) {
+    console.log(`Hello ${name}`);
 }

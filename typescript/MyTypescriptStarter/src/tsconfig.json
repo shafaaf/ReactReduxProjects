@@ -15,5 +15,6 @@
     "allowUnreachableCode": false
   },
   "exclude": [
+    "../tests"
   ]
 }
