@@ -1,4 +1,1 @@
-https://flaviocopes.com/jest/
-
-
-https://jestjs.io/docs/en/mock-functions
+https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c
