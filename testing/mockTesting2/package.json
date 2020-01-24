@@ -16,7 +16,6 @@
     "jest": "^25.1.0"
   },
   "dependencies": {
-    "babel-jest": "^25.1.0",
     "mathjs": "^6.5.0"
   }
 }
