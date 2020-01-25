@@ -1,1 +1,1 @@
-Useful react examples/tutorials
+Useful JavaScript examples/tutorials
