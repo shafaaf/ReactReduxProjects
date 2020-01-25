@@ -1,6 +1,8 @@
 import * as app from "./app";
 import * as math from "./math";
 
+const path = require('path');
+
 test("calls math.add", () => {
     const addMock = jest.spyOn(math, "add");
 

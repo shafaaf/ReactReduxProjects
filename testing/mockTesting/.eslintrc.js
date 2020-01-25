@@ -5,14 +5,9 @@ module.exports = {
         "node": true
     },
     "rules": {
-        "indent": "off",
+        "indent": ["error", 4, {"MemberExpression": "off"}],
         "comma-dangle": "off",
         "no-plusplus": "off",
-        "object-curly-newline": ["error", {
-            "ObjectExpression": "always",
-            "ObjectPattern": { "multiline": true },
-            "ImportDeclaration": "never",
-            "ExportDeclaration": { "multiline": true, "minProperties": 3 }
-        }]
+        "prefer-destructuring": "off"
     }
 };
