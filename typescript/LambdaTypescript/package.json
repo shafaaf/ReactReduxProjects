@@ -1,5 +1,5 @@
 {
-  "name": "my-typescript-starter",
+  "name": "hello-ts-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "mkdir dist && npm install && cd src && tsc && cd ../",
-    "clean": "rm -rf node_modules/ coverage/ dist/",
+    "build": "npm install && cd src && tsc && cd ../",
+    "clean": "sudo rm -rf node_modules/ coverage/",
     "pretest": "eslint src/*.ts tests/*.ts",
     "test": "jest",
     "test-coverage": "jest --coverage"

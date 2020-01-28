@@ -1,0 +1,20 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "../dist",
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": false,
+    "moduleResolution": "node",
+    "strict": true,
+    "allowUnreachableCode": false
+  },
+  "exclude": [
+    "../tests"
+  ]
+}
