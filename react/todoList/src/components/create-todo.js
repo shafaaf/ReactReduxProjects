@@ -7,8 +7,8 @@ export default class CreateTodo extends React.Component {
     super(props);
     this.state = {
       error: null
-    }; 
-  } 
+    };
+  }
 
   render() {
   	return (
@@ -21,31 +21,31 @@ export default class CreateTodo extends React.Component {
   }
 
   // For printing error messages
-  renderError(){
-    if(!this.state.error){
+  renderError() {
+    if (!this.state.error) {
       return null;
     }
-    else{
+    else {
       return <div style = {{color:'red'}}>{this.state.error}</div>;
     }
   }
 
   // Called when form to create task is submitted
-  handleCreate(event){ 
+  handleCreate(event) {
   	event.preventDefault();
-  	console.log("At handle    Create: ", event.target);
+  	console.log("At handleCreate: ", event.target);
   	var task =  this.refs.createInput.value;
   	console.log("At handleCreate: ", task);
-  	
-    var validateInput = this.validateInput(task);
-    if(validateInput){  // task invalid
+
+    const validateInput = this.validateInput(task);
+    if(validateInput) {  // task invalid
       this.setState({
         error: validateInput
       });
       return;
     }
     // Task is valid
-    this.setState({ 
+    this.setState({
       error: null
     });
     this.props.createTask(task);
@@ -58,7 +58,7 @@ export default class CreateTodo extends React.Component {
     if(!task){
       return "Please enter a task name.";
     }
-    //Checks if task already exists or not
+    // Checks if task already exists or not
     var todos = this.props.todos;
     var todosLength = todos.length;
     console.log("todosLength is: ", todosLength);

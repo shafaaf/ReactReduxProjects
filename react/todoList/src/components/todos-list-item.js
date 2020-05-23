@@ -3,12 +3,12 @@
 
 // See how CSS colors styles are applied
 
-// Need to change state for tasks when clicked and 
+// Need to change state for tasks when clicked and
 // so need a prop which modifies state of previous component
 
 import React from 'react';
 
-export default class TodosListItem extends React.Component{
+export default class  TodosListItem extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -17,17 +17,17 @@ export default class TodosListItem extends React.Component{
 	}
 
 	// Change editing state to true on edit click
-	onEditClick(){
+	onEditClick() {
 		console.log("Editing");
 		this.setState ({
 			isEditing: true
 		});
 	}
 
-	// Change cancel state to false on canel click	
+	// Change cancel state to false on canel click
 	onCancelClick(){
 		console.log("Cancelling");
-		this.setState ({ 
+		this.setState ({
 			isEditing: false
 		});
 	}
@@ -42,16 +42,16 @@ export default class TodosListItem extends React.Component{
 		this.setState({isEditing: false});
 	}
 
-	renderTaskSection(){
+	renderTaskSection() {
 		//console.log("this.props is: ", this.props);
-		var task = this.props.task;
-		var isCompleted = this.props.isCompleted;
+		const task = this.props.task;
+		const isCompleted = this.props.isCompleted;
 		const taskStyle = {
 			color: isCompleted ? 'green': 'red',
 			cursor: 'pointer'
-		}
+		};
 
-		if (this.state.isEditing){	// Editing so need input box
+		if (this.state.isEditing) { // Editing so need input box
 			return (
 				<td>
 					<form onSubmit = {this.onSaveClick.bind(this)}>
@@ -61,17 +61,17 @@ export default class TodosListItem extends React.Component{
 				</td>
 			);
 		}
-		else{	// Not editing so just return the task name
+		else { // Not editing so just return the task name
 			return (
 				<td style = {taskStyle} onClick = {this.props.toggleTask.bind(this, task)}>
 					{task}
 				</td>
 			);
-		} 
+		}
 	}
 
-	renderActionSection(){
-		if(this.state.isEditing){ 
+	renderActionSection() {
+		if(this.state.isEditing){
 			return ( // Return buttons (save, cancel) when editing
 				<td>
 					<button onClick = {this.onSaveClick.bind(this)}>Save</button>
@@ -92,7 +92,7 @@ export default class TodosListItem extends React.Component{
 	render() {
 		return (
 			<tr>
-				{this.renderTaskSection()}				
+				{this.renderTaskSection()}
 				{this.renderActionSection()}
 			</tr>
 		);
