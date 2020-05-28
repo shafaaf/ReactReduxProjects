@@ -1,16 +1,38 @@
-import React from 'react';
-import {TodoListItem} from "./TodoListItem";
+import React, {useState} from 'react';
+import {TodoList} from "./TodoList";
+import {AddTodoForm} from "./AddTodoForm";
 
-const todos: Array<Todo> = [
-  {text: "feed the cat", complete: true},
-  {text: "write app", complete: false},
+const initialTodos: Array<Todo> = [
+    {text: "feed the cat", complete: true},
+    {text: "write app", complete: false},
 ];
 
 const App: React.FC = () => {
-  return (
+    const [todos, setTodos] = useState(initialTodos);
+
+    const toggleTodo: ToggleTodo = (selectedTodo) => {
+            const newTodos = todos.map(todo => {
+            if (todo === selectedTodo) {
+                return {
+                    text: todo.text, complete: !todo.complete
+                };
+            }
+            return todo;
+        });
+        setTodos(newTodos);
+    };
+
+    const addTodo: AddTodo = (newTodo) => {
+        if (newTodo.length == 0) {
+            return;
+        }
+        setTodos([...todos, {text: newTodo, complete: false}])
+    };
+
+    return (
       <React.Fragment>
-          <TodoListItem todo = {todos[0]}/>
-          <TodoListItem todo = {todos[1]}/>
+          <TodoList todos = {todos} toggleTodo = {toggleTodo}/>
+          <AddTodoForm addTodo = {addTodo}/>
       </React.Fragment>
   );
 };
