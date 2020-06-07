@@ -13,11 +13,10 @@ const Routes = () => (
         <App/>
         <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path="/about" component={About}></Route>
-            <Route path="/books" component={Book}></Route>
+            <Route path="/about" component={About}/>
+            <Route path="/books" component={Book}/>
         </Switch>
     </div>
 );
-
 
 export default Routes;

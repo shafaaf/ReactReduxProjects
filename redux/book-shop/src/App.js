@@ -19,8 +19,6 @@ const App = (props) => {
             </div>
           </div>
         </nav>
-        {/* Each smaller components */}
-        {props.children}
       </div>
   );
 };
