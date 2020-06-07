@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 
-// React router components
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom'
 
-//Other components
 import App from './app';
 
 class Start extends React.Component {
@@ -24,4 +22,7 @@ class Start extends React.Component {
 	}
 }
 
-ReactDOM.render(<Start/>, document.getElementById('container'));
+ReactDOM.render(
+	<Start/>,
+	document.getElementById('root')
+);

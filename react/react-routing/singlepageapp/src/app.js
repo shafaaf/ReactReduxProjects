@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-// React router components
 import {
   BrowserRouter as Router,
   Route,
@@ -8,8 +7,6 @@ import {
   Switch
 } from 'react-router-dom'
 
-
-//import other components
 import Home from './home';
 import Contact from './contact';
 import Stuff from './stuff';
