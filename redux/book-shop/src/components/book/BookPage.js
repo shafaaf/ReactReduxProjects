@@ -1,16 +1,20 @@
 import React from 'react';
 
-class Book extends React.Component {
+class Book extends React.Component{
     constructor(props) {
+        // Pass props back to parent
         super(props);
     }
 
-    submitBook(input) {
-        alert('Submitted');
+    // Submit book handler
+    submitBook(input){
+        alert('Submitted')
     }
 
-    render() {
+    render(){
+        // Title input tracker
         let titleInput;
+        // return JSX
         return(
             <div>
                 <h3>Books</h3>
