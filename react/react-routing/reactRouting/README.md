@@ -1,2 +1,4 @@
 React Routing from following:
-https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
+https://blog.pshrmn.com/simple-react-router-v4-tutorial/
+
+Demo: https://codesandbox.io/s/vVoQVk78

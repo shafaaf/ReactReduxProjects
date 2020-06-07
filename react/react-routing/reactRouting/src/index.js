@@ -18,7 +18,8 @@ const App = () => (
     <Header />
     <Main />
   </div>
-)
+);
+
 
 const Header = () => (
   <header>
@@ -30,7 +31,7 @@ const Header = () => (
       </ul>
     </nav>
   </header>
-)
+);
 
 const Main = () => (
   <main>
@@ -40,7 +41,7 @@ const Main = () => (
       <Route path='/schedule' component={Schedule}/>
     </Switch>
   </main>
-)
+);
 
 const Roster = () => (
   <div>
@@ -50,7 +51,7 @@ const Roster = () => (
       <Route path='/roster/:number' component={Player}/>
     </Switch>
   </div>
-)
+);
 
 // ---------------- Components --------------------
 
@@ -58,7 +59,7 @@ const Home = () => (
   <div>
     <h1>Welcome to the Tornadoes Website!</h1>
   </div>
-)
+);
 
 const Schedule = () => (
   <div>
@@ -68,7 +69,7 @@ const Schedule = () => (
       <li>6/14 @ United</li>
     </ul>
   </div>
-)
+);
 
 const FullRoster = () => (
   <div>
@@ -82,13 +83,13 @@ const FullRoster = () => (
       }
     </ul>
   </div>
-)
+);
 
 // For an indivitual player
 const Player = (props) => {
 	const player = PlayerAPI.get(
 		parseInt(props.match.params.number, 10)
-	)
+	);
 	if (!player) {
 		return <div>Sorry, but the player was not found</div>
 	}
@@ -98,7 +99,7 @@ const Player = (props) => {
 			<h2>Position: {player.position}</h2>
 		</div>
 	)
-}
+};
 
 // ---------------- Rendering --------------------
 

@@ -9,7 +9,7 @@ export const PlayerAPI = {
   ],
   all: function() { return this.players},
   get: function(id) {
-    const isPlayer = p => p.number === id
+    const isPlayer = p => p.number === id;
     return this.players.find(isPlayer)
   }
-}
+};
