@@ -1,12 +1,21 @@
 import React  from 'react';
 
+import { Switch, Route, Router } from 'react-router-dom'
+
 import Home from './components/common/HomePage'
 import About from './components/common/AboutPage'
 import Book from './components/book/BookPage'
+import App from './App'
+
 
 const Routes = () => (
     <div>
-        <h1>asd</h1>
+        <App/>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path="/about" component={About}></Route>
+            <Route path="/books" component={Book}></Route>
+        </Switch>
     </div>
 );
 
