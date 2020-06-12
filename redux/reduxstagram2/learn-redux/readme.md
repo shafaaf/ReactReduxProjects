@@ -2,6 +2,9 @@
 
 A simple React + Redux implementation. This will be turned into a free video series once the app is totally fleshed out.
 
+Tutorial from: 
+https://courses.wesbos.com/account/access/5ed88dfa9edbdf3638127738
+
 ## Code
 https://github.com/wesbos/Learn-Redux-Starter-Files
 
