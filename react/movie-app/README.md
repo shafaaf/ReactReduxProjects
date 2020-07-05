@@ -6,5 +6,8 @@ Code: https://github.com/TylerPottsDev/react-movie-database
 
 ## Setup 
 ```npm install```
-```Insert api key in apiUrl in app.js```
+```
+    Insert api key in .env file in root dir like:
+        REACT_APP_API_KEY = '#######'
+```
 ```npm run start```
