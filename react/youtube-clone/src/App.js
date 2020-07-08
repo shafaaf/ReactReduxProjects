@@ -8,6 +8,11 @@ require('dotenv').config();
 
 class App extends React.Component {
 
+    state = {
+        videos: [],
+        selectedVideo: null
+    };
+
     handleSubmit = async (searchTerm) => {
         console.log("searchTerm is: ", searchTerm);
         const response = await youtube.get("search", {
@@ -18,28 +23,33 @@ class App extends React.Component {
                 q: searchTerm
             }
         });
-        console.log("process.env.REACT_APP_API_KEY is: ", process.env.REACT_APP_API_KEY);
         console.log("response is: ", response);
+
+        this.setState({
+            videos : response.data.items,
+            selectedVideo: response.data.items[0]
+        });
     };
 
       render() {
-        return (
-            <Grid justify="center" container spacing={16}>
-                <Grid item xs={12}>
-                    <Grid container spacing={10}>
-                        <Grid item xs={12}>
-                            <SearchBar onFormSubmit = {this.handleSubmit}/>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <VideoDetail/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <VideoList/>
+          const {selectedVideo} = this.state;
+            return (
+                <Grid justify="center" container spacing={16}>
+                    <Grid item xs={12}>
+                        <Grid container spacing={10}>
+                            <Grid item xs={12}>
+                                <SearchBar onFormSubmit = {this.handleSubmit}/>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <VideoDetail video = {selectedVideo}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <VideoList/>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        );
+            );
       }
 }
 
