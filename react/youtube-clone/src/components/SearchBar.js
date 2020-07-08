@@ -29,8 +29,6 @@ class SearchBar extends Component {
             </Paper>
         );
     }
-
-
 }
 
 export default SearchBar;

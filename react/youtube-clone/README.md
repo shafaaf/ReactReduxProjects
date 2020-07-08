@@ -10,3 +10,6 @@ Code: https://github.com/adrianhajdin/project_youtube_video_player
         REACT_APP_API_KEY = '#######'
 ```
 ```npm run start```
+
+11:12:00: Summary of video
+
