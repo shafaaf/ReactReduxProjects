@@ -1,0 +1,2 @@
+## React Snapshot example
+
