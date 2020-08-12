@@ -16,7 +16,7 @@ class Book extends React.Component{
         let titleInput;
         // return JSX
         return(
-            <h1>Books</h1>
+            <h1>Books Page</h1>
         )
     }
 }
