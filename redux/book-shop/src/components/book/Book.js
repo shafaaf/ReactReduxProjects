@@ -4,11 +4,9 @@ import * as bookActions from '../../actions/bookActions';
 
 class Book extends React.Component{
     constructor(props){
-        // Pass props back to parent
         super(props);
     }
 
-    // Submit book handler
     submitBook(input){
         alert('Submitted')
     }
@@ -25,14 +23,12 @@ class Book extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        // You can now say this.props.books
         books: state.books
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // You can now say this.props.createBook
         createBook: book => dispatch(bookActions.createBook(book))
     }
 };
