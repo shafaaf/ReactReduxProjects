@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Counter from './Counter';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 const initialState = {
     count: 0
@@ -34,15 +34,14 @@ store.dispatch({ type: "INCREMENT" });
 store.dispatch({ type: "INCREMENT" });
 
 const App = () => (
-    <Provider store={store}>
+    <Provider store = {store}>
         <Counter/>
     </Provider>
 );
 
-
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
