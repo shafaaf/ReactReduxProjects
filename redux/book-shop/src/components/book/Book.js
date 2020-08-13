@@ -8,7 +8,12 @@ class Book extends React.Component{
     }
 
     submitBook(input){
-        this.props.createBook(input);
+        this.props.createBookLocally(input);
+    }
+
+    fetchBooksOnClick() {
+        console.log("Fetching books");
+        this.props.fetchBooks();
     }
 
     render() {
@@ -29,6 +34,10 @@ class Book extends React.Component{
                     }}>
                         <input type="text" name="title" ref={node => titleInput = node}/>
                         <input type="submit" />
+                        <br/>
+                        <br/>
+                        <button onClick={this.fetchBooksOnClick.bind(this)} type="button">Fetch Books</button>
+
                     </form>
                 </div>
             </div>
@@ -44,7 +53,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createBook: book => dispatch(bookActions.createBook(book))
+        createBookLocally: book => dispatch(bookActions.createBookLocally(book)),
+        fetchBooks: () => dispatch(bookActions.fetchBooks())
     }
 };
 
