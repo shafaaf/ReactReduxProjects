@@ -5,4 +5,4 @@ Demo: https://react-shopping-cart-final.herokuapp.com/
 Code: https://github.com/basir/react-shopping-cart
 
 ## TODO
-Part 05 Products List Component complete
+Part 06: Filter Products Component complete
