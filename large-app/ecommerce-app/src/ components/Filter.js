@@ -4,7 +4,7 @@ class Filter extends Component {
     render() {
         return (
             <div className="filter">
-                <div className="filter-result">{this.props.count}</div>
+                <div className="filter-result">{this.props.count} Products Available</div>
 
                 <div className="filter-sort">
                     Sort{" "}

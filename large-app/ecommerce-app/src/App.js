@@ -15,7 +15,7 @@ class App extends React.Component {
         console.log("products is: ", this.state.products);
     }
 
-    sortProducts = e => {
+    sortProducts = e => { // sort filtered product list by size
         const sortBy = e.target.value;
         console.log("calling sortProducts: ", sortBy);
         this.setState({
@@ -32,7 +32,7 @@ class App extends React.Component {
         });
     };
 
-    filterProductsBySize = e => { // filter by size
+    filterProductsBySize = e => { // filter all products by size
         const size = e.target.value;
         console.log("calling filterProducts: ", size);
 
@@ -44,7 +44,7 @@ class App extends React.Component {
         } else { // filter by some size
             this.setState({
                 size: size,
-                products: this.state.products.filter(product =>
+                products: data.products.filter(product =>
                     product.availableSizes.indexOf(size) >= 0
                 )
             });
