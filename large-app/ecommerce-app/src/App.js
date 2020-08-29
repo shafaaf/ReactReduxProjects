@@ -18,6 +18,18 @@ class App extends React.Component {
     sortProducts = e => {
         const sortBy = e.target.value;
         console.log("calling sortProducts: ", sortBy);
+        this.setState({
+            sort: sortBy,
+            products: this.state.products.sort((a, b) => {
+                if (sortBy  === "lowest") {
+                    return a.price < b.price? -1:1;
+                } else if (sortBy  === "highest") {
+                    return a.price < b.price? 1:-1;
+                } else if (sortBy  === "latest") {
+                    return a._id < b._id? -1:1;
+                }
+            })
+        });
     };
 
     filterProductsBySize = e => { // filter by size
@@ -32,7 +44,7 @@ class App extends React.Component {
         } else { // filter by some size
             this.setState({
                 size: size,
-                products: data.products.filter(product =>
+                products: this.state.products.filter(product =>
                     product.availableSizes.indexOf(size) >= 0
                 )
             });
