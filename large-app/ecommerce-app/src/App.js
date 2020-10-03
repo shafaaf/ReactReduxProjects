@@ -9,7 +9,8 @@ class App extends React.Component {
         super();
         this.state = {
             products: data.products,
-            cartItems: [],
+            // read cart form storage if exists
+            cartItems: localStorage.getItem("cartItems"  )? JSON.parse(localStorage.getItem("cartItems")) : [],
             // user selected
             size: "",
             sort: ""
@@ -21,6 +22,8 @@ class App extends React.Component {
         const cartItems = this.state.cartItems.slice();
         this.setState({
             cartItems: cartItems.filter(x => x._id !== product._id)
+        },() => {
+            localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
         });
     }
 
@@ -38,6 +41,8 @@ class App extends React.Component {
         }
         this.setState({
             cartItems
+        },() => {
+            localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
         });
     }
 
