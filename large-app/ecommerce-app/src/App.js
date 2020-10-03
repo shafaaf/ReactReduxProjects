@@ -2,17 +2,43 @@ import React from 'react';
 import data from './data';
 import Products from "./ components/Products";
 import Filter from "./ components/Filter";
+import Cart from "./ components/Cart";
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             products: data.products,
+            cartItems: [],
             // user selected
             size: "",
             sort: ""
         };
         console.log("products is: ", this.state.products);
+    }
+
+    removeFromCart = product => {
+        const cartItems = this.state.cartItems.slice();
+        this.setState({
+            cartItems: cartItems.filter(x => x._id !== product._id)
+        });
+    }
+
+    addToCart = product => {
+        const cartItems = this.state.cartItems.slice();
+        let alreadyInCart = false;
+        cartItems.forEach(item => {
+            if (item._id === product._id) {
+                item.count++;
+                alreadyInCart = true;
+            }
+        });
+        if (!alreadyInCart) {
+            cartItems.push({...product, count: 1});
+        }
+        this.setState({
+            cartItems
+        });
     }
 
     sortProducts = e => { // sort filtered product list by size
@@ -68,10 +94,10 @@ class App extends React.Component {
                                     filterProductsBySize = {this.filterProductsBySize}
                                     sortProducts = {this.sortProducts}
                                 />
-                                <Products products = {this.state.products}/>
+                                <Products products = {this.state.products} addToCart = {this.addToCart}/>
                             </div>
                             <div className="sidebar">
-                                Cart Items
+                                <Cart cartItems = {this.state.cartItems}  removeFromCart = {this.removeFromCart}/>
                             </div>
                         </div>
                     </main>
