@@ -25,7 +25,7 @@ class App extends React.Component {
         },() => {
             localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
         });
-    }
+    };
 
     addToCart = product => {
         const cartItems = this.state.cartItems.slice();
@@ -44,7 +44,7 @@ class App extends React.Component {
         },() => {
             localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
         });
-    }
+    };
 
     sortProducts = e => { // sort filtered product list by size
         const sortBy = e.target.value;
@@ -102,7 +102,10 @@ class App extends React.Component {
                                 <Products products = {this.state.products} addToCart = {this.addToCart}/>
                             </div>
                             <div className="sidebar">
-                                <Cart cartItems = {this.state.cartItems}  removeFromCart = {this.removeFromCart}/>
+                                <Cart
+                                    cartItems = {this.state.cartItems}
+                                    removeFromCart = {this.removeFromCart}
+                                />
                             </div>
                         </div>
                     </main>

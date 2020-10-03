@@ -5,4 +5,4 @@ Demo: https://react-shopping-cart-final.herokuapp.com/
 Code: https://github.com/basir/react-shopping-cart
 
 ## TODO
-Part 07: Cart Component complete
+Part 08: Checkout Form complete

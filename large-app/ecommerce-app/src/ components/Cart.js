@@ -1,7 +1,24 @@
 import React, {Component} from 'react';
 import formatCurrency from "../utils";
+import Filter from "./Filter";
+import Form from "./Form";
 
 class Cart extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showCheckout: false
+        }
+    }
+
+    createOrder = (name, email, address) => {
+        const order = {
+            name, email, address
+        };
+        console.log("on createOrder on cart.js: ", order);
+    };
+
     render() {
         const {cartItems} = this.props;
 
@@ -36,18 +53,29 @@ class Cart extends Component {
                         </ul>
                     </div>
 
-                    {/* Show total only when no cart items */}
+                    {/* Show total only when there are cart items */}
                     {cartItems.length !== 0 && (
-                        <div className="cart">
-                            <div className="total">
-                                <div>
-                                    Total: {" "}
-                                    {formatCurrency(cartItems.reduce((a, c) => a + (c.price * c.count), 0))}
+                        <div>
+                            <div className="cart">
+                                <div className="total">
+                                    <div>
+                                        Total: {" "}
+                                        {formatCurrency(cartItems.reduce((a, c) => a + (c.price * c.count), 0))}
+                                    </div>
+                                    <button onClick={() => this.setState({showCheckout: true})}
+                                            className="button primary">
+                                        Proceed
+                                    </button>
                                 </div>
-                                <button className="button primary">Proceed</button>
                             </div>
+                            {this.state.showCheckout && (
+                                <Form createOrder = {this.createOrder}/>
+                            )}
                         </div>
+
                     )}
+
+
 
                 </div>
             </div>
