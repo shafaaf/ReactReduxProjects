@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import formatCurrency from "../utils";
-import Filter from "./Filter";
 import Form from "./Form";
+import Fade from 'react-reveal/Fade';
 
 class Cart extends Component {
 
@@ -31,26 +31,28 @@ class Cart extends Component {
                 )}
                 <div>
                     <div className="cart">
-                        <ul className="cart-items">
-                            {cartItems.map((item) => (
-                                <li key={item._id}>
-                                    <div>
-                                        <img src={item.image} alt={item.title}/>
-                                    </div>
-                                    <div>
-                                        <div>{item.title}</div>
-                                        <div className="right">
-                                            {item.count} x {formatCurrency(item.price)} {"  "}
-                                            <button
-                                                className="button"
-                                                onClick={() => this.props.removeFromCart(item)}>
-                                                Remove
-                                            </button>
+                        <Fade left cascade>
+                            <ul className="cart-items">
+                                {cartItems.map((item) => (
+                                    <li key={item._id}>
+                                        <div>
+                                            <img src={item.image} alt={item.title}/>
                                         </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                                        <div>
+                                            <div>{item.title}</div>
+                                            <div className="right">
+                                                {item.count} x {formatCurrency(item.price)} {"  "}
+                                                <button
+                                                    className="button"
+                                                    onClick={() => this.props.removeFromCart(item)}>
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Fade>
                     </div>
 
                     {/* Show total only when there are cart items */}
