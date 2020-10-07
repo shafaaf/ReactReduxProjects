@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import formatCurrency from "../utils";
 import Fade from 'react-reveal/Fade';
-import Modal from 'react-modal';
-import Zoom from "react-reveal/Zoom";
+import ProductModal from "./ProductModal";
 
 class Products extends Component {
     constructor(props) {
@@ -26,6 +25,7 @@ class Products extends Component {
 
     render() {
         const {productClickedOn} = this.state;
+        const {addToCart} = this.props;
         return (
             <div>
                 <Fade bottom cascade>
@@ -52,47 +52,12 @@ class Products extends Component {
                 </Fade>
                 {
                     productClickedOn &&
-                    <Modal
-                        isOpen={true}
-                        onRequestClose={this.closeModal}
-                        ariaHideApp={false}>
-                        <Zoom>
-                            <button
-                                className="close-modal"
-                                onClick={() => this.closeModal()}>
-                                    Close Modal
-                            </button>
-
-                            <div className="product-details">
-                                <img src={productClickedOn.image} alt = {productClickedOn.title}/>
-                                <div className="product-details-description">
-                                    <p><strong>{productClickedOn.title}</strong></p>
-                                    <p>{productClickedOn.description}</p>
-                                    <p>
-                                        Avaiable Sizes:{" "}
-                                        {productClickedOn.availableSizes.map((x, key) => (
-                                            <span key = {key}>{" "}
-                                                <button className="button">{x}</button>
-                                            </span>
-                                        ))}
-                                    </p>
-
-                                    <div className="product-price">
-                                        <div>{formatCurrency(productClickedOn.price)}</div>
-                                        <button
-                                            className="button primary"
-                                            onClick={() => {
-                                                this.props.addToCart(productClickedOn);
-                                                this.closeModal();
-                                            }}>
-                                                Add To Cart
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </Zoom>
-                    </Modal>
+                    <ProductModal
+                        productClickedOn = {productClickedOn}
+                        addToCart = {addToCart}
+                        openModal = {this.openModal}
+                        closeModal = {this.closeModal}>
+                    </ProductModal>
                 }
             </div>
         );
