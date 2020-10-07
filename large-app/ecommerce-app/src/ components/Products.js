@@ -1,18 +1,40 @@
 import React, {Component} from 'react';
 import formatCurrency from "../utils";
 import Fade from 'react-reveal/Fade';
+import Modal from 'react-modal';
+import Zoom from "react-reveal/Zoom";
 
 class Products extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            productClickedOn: null
+        };
+    }
+
+    openModal = (productClickedOn) => {
+        this.setState({
+            productClickedOn
+        });
+    };
+
+    closeModal = () => {
+        this.setState({
+            productClickedOn: null
+        });
+    };
+
     render() {
+        const {productClickedOn} = this.state;
         return (
-            <Fade bottom cascade>
-                <div>
+            <div>
+                <Fade bottom cascade>
                     <ul className="products">
                         {
                             this.props.products.map(product => (
                                 <li key = {product._id}>
                                     <div className="product">
-                                        <a href={"#" + product._id}>
+                                        <a href={"#" + product._id} onClick={() => this.openModal(product)}>
                                             <img src = {product.image} alt = {product.title}/>
                                             <p>{product.title}</p>
                                         </a>
@@ -27,8 +49,52 @@ class Products extends Component {
                             ))
                         }
                     </ul>
-                </div>
-            </Fade>
+                </Fade>
+                {
+                    productClickedOn &&
+                    <Modal
+                        isOpen={true}
+                        onRequestClose={this.closeModal}
+                        ariaHideApp={false}>
+                        <Zoom>
+                            <button
+                                className="close-modal"
+                                onClick={() => this.closeModal()}>
+                                    Close Modal
+                            </button>
+
+                            <div className="product-details">
+                                <img src={productClickedOn.image} alt = {productClickedOn.title}/>
+                                <div className="product-details-description">
+                                    <p><strong>{productClickedOn.title}</strong></p>
+                                    <p>{productClickedOn.description}</p>
+                                    <p>
+                                        Avaiable Sizes:{" "}
+                                        {productClickedOn.availableSizes.map((x, key) => (
+                                            <span key = {key}>{" "}
+                                                <button className="button">{x}</button>
+                                            </span>
+                                        ))}
+                                    </p>
+
+                                    <div className="product-price">
+                                        <div>{formatCurrency(productClickedOn.price)}</div>
+                                        <button
+                                            className="button primary"
+                                            onClick={() => {
+                                                this.props.addToCart(productClickedOn);
+                                                this.closeModal();
+                                            }}>
+                                                Add To Cart
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </Zoom>
+                    </Modal>
+                }
+            </div>
         );
     }
 }
