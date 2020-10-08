@@ -4,5 +4,23 @@ Tutorial: https://www.youtube.com/watch?v=_pkBqnyxY0w&list=PLeh2GWv22bmQHOAYllM8
 Demo: https://react-shopping-cart-final.herokuapp.com/
 Code: https://github.com/basir/react-shopping-cart
 
+Local MongoDB setup:
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+```brew tap mongodb/brew```
+
+```brew install mongodb-community@4.4```
+
+Start MongoDB:
+
+```brew services start mongodb-community@4.4```
+
+Stop MongoDB:
+
+```brew services stop mongodb-community@4.4```
+
+To store data in DB:
+- Open Postman and under body, paste in data.json as JSON type at POST /api/products
+
 ## TODO
-Part 08: Checkout Form complete
+Part 10: Build Products Backend complete
