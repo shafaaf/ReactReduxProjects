@@ -26,7 +26,7 @@ class ProductModal extends Component {
                             <p><strong>{productClickedOn.title}</strong></p>
                             <p>{productClickedOn.description}</p>
                             <p>
-                                Avaiable Sizes:{" "}
+                                Available Sizes:{" "}
                                 {productClickedOn.availableSizes.map((x, key) => (
                                     <span key = {key}>{" "}
                                         <button className="button">{x}</button>

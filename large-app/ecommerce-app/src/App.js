@@ -5,8 +5,8 @@ import Filter from "./ components/Filter";
 import Cart from "./ components/Cart";
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             products: data.products,
             // read cart form storage if exists
@@ -58,6 +58,9 @@ class App extends React.Component {
                     return a.price < b.price? 1:-1;
                 } else if (sortBy  === "latest") {
                     return a._id < b._id? -1:1;
+                } else {
+                    console.error("Error in sortProducts");
+                    return 0;
                 }
             })
         });
