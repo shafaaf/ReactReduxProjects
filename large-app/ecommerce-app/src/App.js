@@ -49,45 +49,6 @@ class App extends React.Component {
         });
     };
 
-    sortProducts = e => { // sort filtered product list by size
-        const sortBy = e.target.value;
-        console.log("calling sortProducts: ", sortBy);
-        this.setState({
-            sort: sortBy,
-            products: this.state.products.sort((a, b) => {
-                if (sortBy  === "lowest") {
-                    return a.price < b.price? -1:1;
-                } else if (sortBy  === "highest") {
-                    return a.price < b.price? 1:-1;
-                } else if (sortBy  === "latest") {
-                    return a._id < b._id? -1:1;
-                } else {
-                    console.error("Error in sortProducts");
-                    return 0;
-                }
-            })
-        });
-    };
-
-    filterProductsBySize = e => { // filter all products by size
-        const size = e.target.value;
-        console.log("calling filterProducts: ", size);
-
-        if (size === "ALL") { // show all products
-            console.log("All selected");
-            this.setState({
-                products: data.products
-            });
-        } else { // filter by some size
-            this.setState({
-                size: size,
-                products: data.products.filter(product =>
-                    product.availableSizes.indexOf(size) >= 0
-                )
-            });
-        }
-    };
-
     render() {
         return (
             <Provider store = {store}>
@@ -99,14 +60,8 @@ class App extends React.Component {
                         <main>
                             <div className="content">
                                 <div className="main">
-                                    <Filter
-                                        count={this.state.products.length}
-                                        size={this.state.size}
-                                        sort={this.state.sort}
-                                        filterProductsBySize={this.filterProductsBySize}
-                                        sortProducts={this.sortProducts}
-                                    />
-                                    <Products products={this.state.products} addToCart={this.addToCart}/>
+                                    <Filter/>
+                                    <Products addToCart={this.addToCart}/>
                                 </div>
                                 <div className="sidebar">
                                     <Cart

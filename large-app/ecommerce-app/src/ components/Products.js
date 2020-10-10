@@ -3,7 +3,6 @@ import formatCurrency from "../utils";
 import Fade from 'react-reveal/Fade';
 import ProductModal from "./ProductModal";
 
-
 import {connect} from "react-redux";
 import {fetchProducts} from '../actions/productActions'
 
@@ -40,10 +39,10 @@ class Products extends Component {
             <div>
                 <Fade bottom cascade>
                     {
-                        !this.props.products? <div>Loading..</div> : (
+                        !this.props.filteredItems? <div>Loading..</div> : (
                         <ul className="products">
                             {
-                                this.props.products.map(product => (
+                                this.props.filteredItems.map(product => (
                                     <li key = {product._id}>
                                         <div className="product">
                                             <a href={"#" + product._id} onClick={() => this.openModal(product)}>
@@ -80,7 +79,7 @@ class Products extends Component {
 
 const MapStateToProps = (state) => {
     return {
-        products: state.products.items
+        filteredItems: state.products.filteredItems
     };
 };
 
