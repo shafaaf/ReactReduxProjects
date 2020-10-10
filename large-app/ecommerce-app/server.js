@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const shortid = require('shortid');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors()) // Use this after the variable declaration
 
 mongoose.connect("mongodb://localhost:27017/react-shopping-cart-db", {
     useNewUrlParser: true,
