@@ -1,10 +1,8 @@
 import {FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, SORT_PRODUCTS_BY_PRICE} from "../types";
 
 export const fetchProducts = async (dispatch) => {
-    console.log("fetchProducts called");
     const res = await fetch("http://localhost:5000/api/products");
     const data = await res.json();
-    console.log("fetchProducts: data is: ", data);
     dispatch({
         type: FETCH_PRODUCTS,
         payload: data
@@ -12,25 +10,21 @@ export const fetchProducts = async (dispatch) => {
 }
 
 export const filterProductsBySize =  (products, size) => (dispatch) => {
-    console.log("filterProductsBySize called with size: ", size);
     console.log("filterProductsBySize called with products: ", products);
-
-    const test = products.filter(product => product.availableSizes.indexOf(size) >= 0);
-    console.log("test is: ", test);
+    console.log("filterProductsBySize called with size: ", size);
     dispatch({
         type: FILTER_PRODUCTS_BY_SIZE,
         payload: {
             size: size,
-            items: size === "" ?
+            items: size === "ALL" ?
                 products: products.filter(product => product.availableSizes.indexOf(size) >= 0)
         }
     });
 }
 
 export const sortProductsByPrice =  (products, sort) => (dispatch) => {
-    console.log("sortProductsByPrice called");
-    console.log("products is: ", products);
-    console.log("sort is: ", sort);
+    console.log("sortProductsByPrice called with products: ", products);
+    console.log("sortProductsByPrice called with sort: ", sort);
 
     const sortedProducts = products.slice();
     sortedProducts.sort((a, b) => {

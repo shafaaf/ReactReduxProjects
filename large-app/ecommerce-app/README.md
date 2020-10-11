@@ -23,4 +23,4 @@ To store data in the DB:
 - Open Postman and under body, paste in data.json as JSON type at POST /api/products
 
 ## TODO
-Part 10: Build Products Backend complete
+Part 12: Add Redux To Filter complete

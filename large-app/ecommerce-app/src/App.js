@@ -1,5 +1,4 @@
 import React from 'react';
-import data from './data';
 import Products from "./ components/Products";
 import Filter from "./ components/Filter";
 import Cart from "./ components/Cart";
@@ -11,12 +10,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: data.products,
             // read cart form storage if exists
             cartItems: localStorage.getItem("cartItems"  )? JSON.parse(localStorage.getItem("cartItems")) : [],
-            // user selected
-            size: "",
-            sort: ""
         };
         console.log("products is: ", this.state.products);
     }
