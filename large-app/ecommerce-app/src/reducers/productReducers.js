@@ -1,9 +1,8 @@
 import {FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, SORT_PRODUCTS_BY_PRICE} from "../types";
 
-// State includes prioducts object which has
+// State includes products object which has
 // items, filteredItems, size, sort
 
-// TODO: 12:20 mark
 export const productsReducer = (state = {}, action) => {
     console.log("productsReducer: state is: ", state);
     console.log("productsReducer: action is: ", action);

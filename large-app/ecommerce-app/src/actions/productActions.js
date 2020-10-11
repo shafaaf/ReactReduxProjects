@@ -12,13 +12,17 @@ export const fetchProducts = async (dispatch) => {
 }
 
 export const filterProductsBySize =  (products, size) => (dispatch) => {
-    console.log("filterProductsBySize called");
+    console.log("filterProductsBySize called with size: ", size);
+    console.log("filterProductsBySize called with products: ", products);
+
+    const test = products.filter(product => product.availableSizes.indexOf(size) >= 0);
+    console.log("test is: ", test);
     dispatch({
         type: FILTER_PRODUCTS_BY_SIZE,
         payload: {
             size: size,
             items: size === "" ?
-                products: products.filter(product => products.availableSizes.indexOf(size) >= 0)
+                products: products.filter(product => product.availableSizes.indexOf(size) >= 0)
         }
     });
 }

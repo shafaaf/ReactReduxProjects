@@ -19,8 +19,7 @@ class Filter extends Component {
                                 this.props.filteredItems,
                                 e.target.value
                             );
-                        }
-                        }
+                        }}
                     >
                         <option value="latest">Latest</option>
                         <option value="lowest">Lowest</option>
@@ -30,7 +29,15 @@ class Filter extends Component {
 
                 <div className="filter-size">
                     Filter{" "}
-                    <select value = {this.props.size} onChange={this.props.filterProductsBySize}>
+                    <select
+                        value = {this.props.size}
+                        onChange={(e) => {
+                            this.props.filterProductsBySize(
+                                this.props.items,
+                                e.target.value
+                            );
+                        }}
+                    >
                         <option value="ALL">ALL</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -56,8 +63,8 @@ const MapStateToProps = (state) => {
 
 const MapDispatchToProps = (dispatch) => {
     return {
-        filterProductsBySize: () => dispatch(filterProductsBySize("s", 4)),
-        sortProductsByPrice: (filteredItems, size) => dispatch(sortProductsByPrice(filteredItems, size))
+        sortProductsByPrice: (filteredItems, sort) => dispatch(sortProductsByPrice(filteredItems, sort)),
+        filterProductsBySize: (items, size) => dispatch(filterProductsBySize(items, size))
     };
 };
 
