@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import formatCurrency from "../utils";
 import Form from "./Form";
 import Fade from 'react-reveal/Fade';
+import {connect} from "react-redux";
+import {filterProductsBySize, sortProductsByPrice} from "../actions/productActions";
+import {removeFromCart} from "../actions/cartActions";
 
 class Cart extends Component {
 
@@ -85,4 +88,17 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+const MapStateToProps = (state) => {
+    return {
+        cartItems: state.cart.cartItems
+    };
+};
+
+const MapDispatchToProps = (dispatch) => {
+    return {
+        removeFromCart: (existingItems, itemToRemove) => dispatch(removeFromCart(existingItems, itemToRemove))
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(Cart);
+

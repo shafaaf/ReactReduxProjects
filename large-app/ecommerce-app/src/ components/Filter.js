@@ -12,6 +12,10 @@ class Filter extends Component {
 
                 <div className="filter-sort">
                     Sort{" "}
+                    {/*
+                    TODO: Need to allow selecting selection option again as error:
+                        Select an sort option, filter to all sizes, then see sort order not matching
+                    */}
                     <select
                         value = {this.props.sort}
                         onChange={(e) => {

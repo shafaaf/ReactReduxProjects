@@ -9,32 +9,36 @@ export const fetchProducts = async (dispatch) => {
     });
 }
 
-export const filterProductsBySize =  (products, size) => (dispatch) => {
-    console.log("filterProductsBySize called with products: ", products);
+export const filterProductsBySize =  (items, size) => (dispatch) => {
+    console.log("filterProductsBySize called with items: ", items);
     console.log("filterProductsBySize called with size: ", size);
+
     dispatch({
         type: FILTER_PRODUCTS_BY_SIZE,
         payload: {
             size: size,
             items: size === "ALL" ?
-                products: products.filter(product => product.availableSizes.indexOf(size) >= 0)
+                items: items.filter(item => item.availableSizes.indexOf(size) >= 0)
         }
-    });
+    })
 }
 
-export const sortProductsByPrice =  (products, sort) => (dispatch) => {
-    console.log("sortProductsByPrice called with products: ", products);
+export const sortProductsByPrice =  (items, sort) => (dispatch) => {
+    console.log("sortProductsByPrice called with items: ", items);
     console.log("sortProductsByPrice called with sort: ", sort);
 
-    const sortedProducts = products.slice();
-    sortedProducts.sort((a, b) => {
+    const sortedItems = items.slice();
+    sortedItems.sort((a, b) => {
         if (sort  === "lowest") {
             return a.price < b.price? -1:1;
         } else if (sort  === "highest") {
             return a.price < b.price? 1:-1;
         } else if (sort  === "latest") {
             return a._id < b._id? -1:1;
-        } else {
+        } else if (sort  === "") {
+            return 0;
+        }
+        else {
             console.error("Error in sortProducts");
             return 0;
         }
@@ -43,7 +47,7 @@ export const sortProductsByPrice =  (products, sort) => (dispatch) => {
         type: SORT_PRODUCTS_BY_PRICE,
         payload: {
             sort: sort,
-            items: sortedProducts
+            items: sortedItems
         }
     });
 }

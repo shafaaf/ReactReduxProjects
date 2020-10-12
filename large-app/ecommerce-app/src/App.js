@@ -7,43 +7,6 @@ import store from "./store";
 import { Provider } from "react-redux";
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // read cart form storage if exists
-            cartItems: localStorage.getItem("cartItems"  )? JSON.parse(localStorage.getItem("cartItems")) : [],
-        };
-        console.log("products is: ", this.state.products);
-    }
-
-    removeFromCart = product => {
-        const cartItems = this.state.cartItems.slice();
-        this.setState({
-            cartItems: cartItems.filter(x => x._id !== product._id)
-        },() => {
-            localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
-        });
-    };
-
-    addToCart = product => {
-        const cartItems = this.state.cartItems.slice();
-        let alreadyInCart = false;
-        cartItems.forEach(item => {
-            if (item._id === product._id) {
-                item.count++;
-                alreadyInCart = true;
-            }
-        });
-        if (!alreadyInCart) {
-            cartItems.push({...product, count: 1});
-        }
-        this.setState({
-            cartItems
-        },() => {
-            localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
-        });
-    };
-
     render() {
         return (
             <Provider store = {store}>
@@ -56,13 +19,10 @@ class App extends React.Component {
                             <div className="content">
                                 <div className="main">
                                     <Filter/>
-                                    <Products addToCart={this.addToCart}/>
+                                    <Products/>
                                 </div>
                                 <div className="sidebar">
-                                    <Cart
-                                        cartItems={this.state.cartItems}
-                                        removeFromCart={this.removeFromCart}
-                                    />
+                                    <Cart/>
                                 </div>
                             </div>
                         </main>
