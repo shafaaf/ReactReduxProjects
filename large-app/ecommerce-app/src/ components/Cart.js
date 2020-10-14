@@ -89,7 +89,7 @@ class Cart extends Component {
 const MapStateToProps = (state) => {
     return {
         cartItems: state.cart.cartItems,
-        order: state.order.order
+        order: state.order
     };
 };
 
@@ -103,8 +103,6 @@ const MapDispatchToProps = (dispatch) => {
 Cart.propTypes = {
     cartItems: PropTypes.array.isRequired,
     order: PropTypes.object.isRequired,
-
-
     removeFromCart: PropTypes.func.isRequired,
     clearOrder: PropTypes.func.isRequired
 };

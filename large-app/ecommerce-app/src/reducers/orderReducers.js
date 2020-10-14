@@ -1,15 +1,13 @@
 import { CREATE_ORDER, CLEAR_ORDER, FETCH_ORDERS } from "../types";
 
 const orderReducer = (state = {}, action) => {
-    console.log("orderReducer: state is: ", state);
-    console.log("orderReducer: action is: ", action);
     switch (action.type) {
         case CREATE_ORDER:
-            return { order: action.payload };
+            return Object.assign({}, action.payload);
         case CLEAR_ORDER:
-            return { order: null };
+            return {};
         case FETCH_ORDERS:
-            return { orders: action.payload };
+            return Object.assign({}, action.payload);
         default:
             return state;
     }

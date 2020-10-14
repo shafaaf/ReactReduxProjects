@@ -94,7 +94,6 @@ Products.propTypes = {
     filteredItems: PropTypes.array.isRequired,
     fetchProducts: PropTypes.func.isRequired,
     addToCart: PropTypes.func.isRequired,
-
 };
 
 export default connect (MapStateToProps, MapDispatchToProps)(Products);

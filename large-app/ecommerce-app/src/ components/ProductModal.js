@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import Zoom from "react-reveal/Zoom";
 import formatCurrency from "../utils";
+import PropTypes from "prop-types";
 
 class ProductModal extends Component {
     render() {
@@ -53,5 +54,12 @@ class ProductModal extends Component {
         );
     }
 }
+
+ProductModal.propTypes = {
+    productClickedOn: PropTypes.object.isRequired,
+    addToCart: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
+};
 
 export default ProductModal;

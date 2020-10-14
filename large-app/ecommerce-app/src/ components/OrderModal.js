@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
 import formatCurrency from "../utils";
+import PropTypes from "prop-types";
 
 class OrderModal extends Component {
 
@@ -13,7 +14,7 @@ class OrderModal extends Component {
         const {order} = this.props;
         return (
             <div>
-                {order && (
+                {Object.entries(order).length !== 0 && (
                     <Modal
                         isOpen={true}
                         onRequestClose={this.props.closeModal}
@@ -66,5 +67,10 @@ class OrderModal extends Component {
         );
     }
 }
+
+OrderModal.propTypes = {
+    order: PropTypes.object.isRequired,
+    clearOrder: PropTypes.func.isRequired
+};
 
 export default OrderModal;

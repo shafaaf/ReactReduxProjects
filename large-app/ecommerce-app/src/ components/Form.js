@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Fade from 'react-reveal/Fade'
 import {connect} from "react-redux";
 import {createOrder} from "../actions/orderActions";
+import PropTypes from "prop-types";
 
 class Form extends Component {
 
@@ -86,6 +87,11 @@ const MapDispatchToProps = (dispatch) => {
     return {
         createOrder: (order) => dispatch(createOrder(order))
     };
+};
+
+Form.propTypes = {
+    cartItems: PropTypes.array.isRequired,
+    createOrder: PropTypes.func.isRequired
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(Form);
