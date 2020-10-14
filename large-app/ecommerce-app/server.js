@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()) // Use this after the variable declaration
+app.use(cors()); // Use this after the variable declaration
 
 mongoose.connect("mongodb://localhost:27017/react-shopping-cart-db", {
     useNewUrlParser: true,

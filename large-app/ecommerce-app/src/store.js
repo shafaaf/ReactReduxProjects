@@ -3,7 +3,18 @@ import thunk from "redux-thunk";
 import {productsReducer} from "./reducers/productReducers";
 import {cartReducer} from "./reducers/cartReducer";
 
-const initialState = {};
+
+const initialState = {
+    cart: {
+        cartItems: []
+    },
+    products: {
+        items: [],
+        filteredItems: [],
+        size: "",
+        sort: ""
+    }
+};
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

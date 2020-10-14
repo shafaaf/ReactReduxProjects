@@ -19,6 +19,10 @@ Stop MongoDB:
 
 ```brew services stop mongodb-community@4.4```
 
+Run server:
+
+``` npm run server```
+
 To store data in the DB:
 - Open Postman and under body, paste in data.json as JSON type at POST /api/products
 

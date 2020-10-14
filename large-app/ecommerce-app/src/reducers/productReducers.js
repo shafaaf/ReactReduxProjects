@@ -21,7 +21,7 @@ export const productsReducer = (state = {}, action) => {
                 filteredItems: action.payload.items,
                 size: action.payload.size
 
-            }
+            };
         case SORT_PRODUCTS_BY_PRICE:
             return {
                 ...state,
@@ -31,4 +31,4 @@ export const productsReducer = (state = {}, action) => {
         default:
             return state;
     }
-}
+};

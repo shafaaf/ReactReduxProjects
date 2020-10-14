@@ -7,7 +7,7 @@ export const fetchProducts = async (dispatch) => {
         type: FETCH_PRODUCTS,
         payload: data
     });
-}
+};
 
 export const filterProductsBySize =  (items, size) => (dispatch) => {
     console.log("filterProductsBySize called with items: ", items);
@@ -21,7 +21,7 @@ export const filterProductsBySize =  (items, size) => (dispatch) => {
                 items: items.filter(item => item.availableSizes.indexOf(size) >= 0)
         }
     })
-}
+};
 
 export const sortProductsByPrice =  (items, sort) => (dispatch) => {
     console.log("sortProductsByPrice called with items: ", items);
