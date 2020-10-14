@@ -15,7 +15,10 @@ const initialState = {
         size: "",
         sort: ""
     },
-    order: {} // populated only to show order modal, and cleared when closing modal
+    order: {
+        currentOrder: {}, // populated only to show order modal, and cleared when closing modal
+        allOrders: [] // to show in admin page
+    }
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

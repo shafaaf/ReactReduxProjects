@@ -1,11 +1,17 @@
 ## E-commerce app
 
 Tutorial: https://www.youtube.com/watch?v=_pkBqnyxY0w&list=PLeh2GWv22bmQHOAYllM8ycm3obDexyoLg
+
 Demo: https://react-shopping-cart-final.herokuapp.com/
+
 Code: https://github.com/basir/react-shopping-cart
 
 Has local storage use, connect, redux dev tools usage, async await
 
+Ecommerce page: http://localhost:3000/
+
+Admin page: http://localhost:3000/
+ 
 Local MongoDB setup:
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 

@@ -25,7 +25,7 @@ export const clearOrder = () => (dispatch) => {
 };
 
 export const fetchOrders = () => (dispatch) => {
-    fetch("/api/orders")
+    fetch("http://localhost:5000/api/orders")
         .then((res) => res.json())
         .then((data) => {
             dispatch({

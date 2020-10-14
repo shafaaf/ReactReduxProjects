@@ -17,7 +17,8 @@ class Cart extends Component {
     }
 
     render() {
-        const {cartItems, order, clearOrder} = this.props;
+        const {cartItems, currentOrder, clearOrder} = this.props;
+        console.log("cart: currentOrder is: ", currentOrder);
         return (
             <div>
                 {cartItems.length === 0? (
@@ -26,8 +27,8 @@ class Cart extends Component {
                     <div className="cart cart-header">You have {cartItems.length} in the cart.</div>
                 )}
 
-                { order && (<OrderModal
-                    order = {order}
+                { currentOrder && (<OrderModal
+                    order = {currentOrder}
                     clearOrder = {clearOrder}
                 />)}
                 <div>
@@ -89,7 +90,7 @@ class Cart extends Component {
 const MapStateToProps = (state) => {
     return {
         cartItems: state.cart.cartItems,
-        order: state.order
+        currentOrder: state.order.currentOrder
     };
 };
 
@@ -102,7 +103,7 @@ const MapDispatchToProps = (dispatch) => {
 
 Cart.propTypes = {
     cartItems: PropTypes.array.isRequired,
-    order: PropTypes.object.isRequired,
+    currentOrder: PropTypes.object.isRequired,
     removeFromCart: PropTypes.func.isRequired,
     clearOrder: PropTypes.func.isRequired
 };
