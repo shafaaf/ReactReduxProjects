@@ -44,4 +44,5 @@ export const sortProductsByPrice =  (items, sort) => (dispatch) => {
             items: sortedItems
         }
     });
-}
+};
+

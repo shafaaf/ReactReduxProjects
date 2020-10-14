@@ -6,7 +6,7 @@ import ProductModal from "./ProductModal";
 import {connect} from "react-redux";
 import {fetchProducts} from '../actions/productActions'
 import {addToCart} from "../actions/cartActions";
-
+import PropTypes from "prop-types";
 
 class Products extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ class Products extends Component {
 
                                             <div className="product-price">
                                                 <div>{formatCurrency(product.price)}</div>
-                                                <button onClick={() => addToCart(product, )} className="button primary">Add to Cart</button>
+                                                <button onClick={() => addToCart(product)} className="button primary">Add to Cart</button>
                                             </div>
 
                                         </div>
@@ -88,6 +88,13 @@ const MapDispatchToProps = (dispatch) => {
         fetchProducts: () => dispatch(fetchProducts),
         addToCart: (newItem) => dispatch(addToCart(newItem))
     };
+};
+
+Products.propTypes = {
+    filteredItems: PropTypes.array.isRequired,
+    fetchProducts: PropTypes.func.isRequired,
+    addToCart: PropTypes.func.isRequired,
+
 };
 
 export default connect (MapStateToProps, MapDispatchToProps)(Products);

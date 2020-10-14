@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Fade from 'react-reveal/Fade'
 import {connect} from "react-redux";
-import {removeFromCart} from "../actions/cartActions";
 import {createOrder} from "../actions/orderActions";
 
 class Form extends Component {

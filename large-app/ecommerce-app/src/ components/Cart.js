@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {removeFromCart} from "../actions/cartActions";
 import OrderModal from "./OrderModal";
 import {clearOrder} from "../actions/orderActions";
+import PropTypes from "prop-types";
 
 class Cart extends Component {
     constructor(props) {
@@ -97,6 +98,15 @@ const MapDispatchToProps = (dispatch) => {
         removeFromCart: (existingItems, itemToRemove) => dispatch(removeFromCart(existingItems, itemToRemove)),
         clearOrder: () => dispatch(clearOrder())
     };
+};
+
+Cart.propTypes = {
+    cartItems: PropTypes.array.isRequired,
+    order: PropTypes.object.isRequired,
+
+
+    removeFromCart: PropTypes.func.isRequired,
+    clearOrder: PropTypes.func.isRequired
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(Cart);

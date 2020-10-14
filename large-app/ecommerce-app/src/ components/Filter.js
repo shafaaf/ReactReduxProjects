@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
 import { filterProductsBySize, sortProductsByPrice } from "../actions/productActions";
 
 class Filter extends Component {
@@ -70,6 +72,15 @@ const MapDispatchToProps = (dispatch) => {
         sortProductsByPrice: (filteredItems, sort) => dispatch(sortProductsByPrice(filteredItems, sort)),
         filterProductsBySize: (items, size) => dispatch(filterProductsBySize(items, size))
     };
+};
+
+Filter.propTypes = {
+    size: PropTypes.string.isRequired,
+    sort: PropTypes.string.isRequired,
+    items: PropTypes.array.isRequired,
+    filteredItems: PropTypes.array.isRequired,
+    sortProductsByPrice: PropTypes.func.isRequired,
+    filterProductsBySize: PropTypes.func.isRequired
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(Filter);
