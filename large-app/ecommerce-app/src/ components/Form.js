@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import Fade from 'react-reveal/Fade'
+import {connect} from "react-redux";
+import {removeFromCart} from "../actions/cartActions";
+import {createOrder} from "../actions/orderActions";
 
 class Form extends Component {
 
@@ -18,7 +21,14 @@ class Form extends Component {
 
     createOrder = (e) => {
         e.preventDefault();
-        this.props.createOrder(this.state.name, this.state.email, this.state.address);
+        const order = {
+            name: this.state.name,
+            email: this.state.email,
+            address: this.state.address,
+            cartItems: this.props.cartItems,
+            total: this.props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
+        };
+        this.props.createOrder(order);
     };
 
     render() {
@@ -67,4 +77,16 @@ class Form extends Component {
     }
 }
 
-export default Form;
+const MapStateToProps = (state) => {
+    return {
+        cartItems: state.cart.cartItems
+    };
+};
+
+const MapDispatchToProps = (dispatch) => {
+    return {
+        createOrder: (order) => dispatch(createOrder(order))
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(Form);

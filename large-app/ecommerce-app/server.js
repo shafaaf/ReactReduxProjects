@@ -14,6 +14,7 @@ mongoose.connect("mongodb://localhost:27017/react-shopping-cart-db", {
     useUnifiedTopology: true
 });
 
+// Product related apis
 const Product = mongoose.model("products", new mongoose.Schema({
     _id : {type: String, default: shortid.generate},
     title : String,
@@ -37,6 +38,47 @@ app.post("/api/products", async (req, res) => {
 app.delete("/api/products/:id", async (req, res) => {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     res.send(deletedProduct);
+});
+
+// Order related apis
+const Order = mongoose.model(
+    "orders",
+    new mongoose.Schema(
+        {
+            _id: {type: String, default: shortid.generate},
+            email: String,
+            name: String,
+            address: String,
+            total: Number,
+            cartItems: [
+                {
+                    _id: String,
+                    title: String,
+                    price: Number,
+                    count: Number,
+                },
+            ],
+        },
+        {
+            timestamps: true,
+        }
+    )
+);
+
+app.post("/api/orders", async (req, res) => {
+    if (!(req.body.name && req.body.email && req.body.address && req.body.total && req.body.cartItems)) {
+        return res.send({ message: "Data is required." });
+    }
+    const order = await Order(req.body).save();
+    res.send(order);
+});
+app.get("/api/orders", async (req, res) => {
+    const orders = await Order.find({});
+    res.send(orders);
+});
+app.delete("/api/orders/:id", async (req, res) => {
+    const order = await Order.findByIdAndDelete(req.params.id);
+    res.send(order);
 });
 
 const port = process.env.PORT || 5000;

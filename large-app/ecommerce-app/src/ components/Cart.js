@@ -3,8 +3,9 @@ import formatCurrency from "../utils";
 import Form from "./Form";
 import Fade from 'react-reveal/Fade';
 import {connect} from "react-redux";
-import {filterProductsBySize, sortProductsByPrice} from "../actions/productActions";
 import {removeFromCart} from "../actions/cartActions";
+import OrderModal from "./OrderModal";
+import {clearOrder} from "../actions/orderActions";
 
 class Cart extends Component {
     constructor(props) {
@@ -13,13 +14,9 @@ class Cart extends Component {
             showCheckout: false
         }
     }
-    createOrder = (name, email, address) => {
-        const order = {
-            name, email, address
-        };
-    };
+
     render() {
-        const {cartItems} = this.props;
+        const {cartItems, order, clearOrder} = this.props;
         return (
             <div>
                 {cartItems.length === 0? (
@@ -27,6 +24,11 @@ class Cart extends Component {
                 ) : (
                     <div className="cart cart-header">You have {cartItems.length} in the cart.</div>
                 )}
+
+                { order && (<OrderModal
+                    order = {order}
+                    clearOrder = {clearOrder}
+                />)}
                 <div>
                     <div className="cart">
                         <Fade left cascade>
@@ -69,7 +71,7 @@ class Cart extends Component {
                                 </div>
                             </div>
                             {this.state.showCheckout && (
-                                <Form createOrder = {this.createOrder}/>
+                                <Form/>
                             )}
                         </div>
 
@@ -85,13 +87,15 @@ class Cart extends Component {
 
 const MapStateToProps = (state) => {
     return {
-        cartItems: state.cart.cartItems
+        cartItems: state.cart.cartItems,
+        order: state.order.order
     };
 };
 
 const MapDispatchToProps = (dispatch) => {
     return {
-        removeFromCart: (existingItems, itemToRemove) => dispatch(removeFromCart(existingItems, itemToRemove))
+        removeFromCart: (existingItems, itemToRemove) => dispatch(removeFromCart(existingItems, itemToRemove)),
+        clearOrder: () => dispatch(clearOrder())
     };
 };
 
