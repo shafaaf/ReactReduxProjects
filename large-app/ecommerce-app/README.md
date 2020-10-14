@@ -33,4 +33,4 @@ To store data in the DB:
 - Open Postman and under body, paste in data.json as JSON type at POST /api/products
 
 ## TODO
-Part 12: Add Redux To Filter complete
+Add in admin section by looking at Github code
