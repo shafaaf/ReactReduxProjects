@@ -7,24 +7,19 @@ import {filterProductsBySize, sortProductsByPrice} from "../actions/productActio
 import {removeFromCart} from "../actions/cartActions";
 
 class Cart extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             showCheckout: false
         }
     }
-
     createOrder = (name, email, address) => {
         const order = {
             name, email, address
         };
-        console.log("on createOrder on cart.js: ", order);
     };
-
     render() {
         const {cartItems} = this.props;
-
         return (
             <div>
                 {cartItems.length === 0? (

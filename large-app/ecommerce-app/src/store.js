@@ -3,10 +3,9 @@ import thunk from "redux-thunk";
 import {productsReducer} from "./reducers/productReducers";
 import {cartReducer} from "./reducers/cartReducer";
 
-
 const initialState = {
     cart: {
-        cartItems: []
+        cartItems: JSON.parse(localStorage.getItem("cartItems")) || []
     },
     products: {
         items: [],

@@ -10,9 +10,6 @@ export const fetchProducts = async (dispatch) => {
 };
 
 export const filterProductsBySize =  (items, size) => (dispatch) => {
-    console.log("filterProductsBySize called with items: ", items);
-    console.log("filterProductsBySize called with size: ", size);
-
     dispatch({
         type: FILTER_PRODUCTS_BY_SIZE,
         payload: {
@@ -24,9 +21,6 @@ export const filterProductsBySize =  (items, size) => (dispatch) => {
 };
 
 export const sortProductsByPrice =  (items, sort) => (dispatch) => {
-    console.log("sortProductsByPrice called with items: ", items);
-    console.log("sortProductsByPrice called with sort: ", sort);
-
     const sortedItems = items.slice();
     sortedItems.sort((a, b) => {
         if (sort  === "lowest") {
