@@ -15,7 +15,7 @@ export const createOrder = (order) => (dispatch) => {
                 type: CREATE_ORDER,
                 payload: data
             });
-            localStorage.clear("cartItems");
+            localStorage.removeItem("cartItems");
             dispatch({ type: CLEAR_CART });
         });
 };

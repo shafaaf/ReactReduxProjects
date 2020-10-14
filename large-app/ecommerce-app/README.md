@@ -4,6 +4,8 @@ Tutorial: https://www.youtube.com/watch?v=_pkBqnyxY0w&list=PLeh2GWv22bmQHOAYllM8
 Demo: https://react-shopping-cart-final.herokuapp.com/
 Code: https://github.com/basir/react-shopping-cart
 
+Has local storage use, connect, redux dev tools usage, async await
+
 Local MongoDB setup:
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 
@@ -34,4 +36,3 @@ To store data in the DB:
 
 ## TODO
 Add in admin section by looking at Github code
-
