@@ -1,10 +1,11 @@
 import React from 'react';
+import store from "./store";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
 import Products from "./ components/Products";
 import Filter from "./ components/Filter";
 import Cart from "./ components/Cart";
-
-import store from "./store";
-import { Provider } from "react-redux";
 
 class App extends React.Component {
     render() {
