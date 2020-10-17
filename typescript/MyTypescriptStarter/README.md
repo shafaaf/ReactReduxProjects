@@ -1,6 +1,6 @@
 ## MyTypescriptStarter
 
-Typescript + Jest + Eslint setup
+Typescript + Jest + Eslint + Prettier setup
 
 ### Resources  
 https://www.youtube.com/watch?v=yKUBBdp3bmM
@@ -21,3 +21,6 @@ Typescript lint rules:
 https://github.com/typescript-eslint/typescript-eslint/blob/master/.eslintrc.js
 
 https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules
+
+Prettier:
+https://khalilstemmler.com/blogs/tooling/prettier/
