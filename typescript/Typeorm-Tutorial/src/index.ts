@@ -1,9 +1,13 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {User} from "./entity/User";
+import {Bootstrap} from "./bootstrap";
+import {lazyLoad} from "./queries/lazyLoad";
+import {QueryBuilder} from "./queries/QueryBuilder";
+import {emptyTable} from "./queries/emptyTable";
 
 createConnection().then(async connection => {
-    console.log("Inserting a new user into the database...");
+    /*console.log("Inserting a new user into the database...");
     const user = new User();
     user.firstName = "Timber";
     user.lastName = "Saw";
@@ -17,5 +21,23 @@ createConnection().then(async connection => {
     console.log("Loaded users: ", users);
 
     console.log("Here you can setup and run express/koa/any other framework.");
+     */
+
+    await emptyTable().catch((err) => {
+        console.log(err);
+    });
+
+    await Bootstrap().catch((err) => {
+        console.log(err);
+    });
+
+    await lazyLoad().catch((err) => {
+        console.log(err);
+    });
+
+    await QueryBuilder().catch((err) => {
+        console.log(err);
+    });
+
 
 }).catch(error => console.log(error));
