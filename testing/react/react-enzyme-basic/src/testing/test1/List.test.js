@@ -1,9 +1,15 @@
 import React from 'react';
-import { shallow } from '../enzyme';
+import { shallow } from '../../enzyme';
 
-import List from '../List';
+import List from './List';
 
 describe('List tests', () => {
+
+    it('print wrapper', () => {
+        const items = ['one', 'two', 'three'];
+        const wrapper = shallow(<List items={items} />);
+        console.log("wrapper is:\n" + wrapper.debug());
+    });
 
     it('renders list-items', () => {
         const items = ['one', 'two', 'three'];
