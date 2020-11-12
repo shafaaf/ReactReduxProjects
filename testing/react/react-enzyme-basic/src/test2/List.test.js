@@ -1,9 +1,7 @@
-import {shallow} from "../../enzyme";
+import {shallow} from "../enzyme";
 import React from "react";
-import { mount, render } from '../../enzyme';
-import { wrap } from 'module';
+import { mount, render } from '../enzyme';
 import List from "./List";
-
 
 describe('List tests', () => {
 
