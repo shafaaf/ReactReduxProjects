@@ -17,14 +17,14 @@ describe('App Component', () => {
   });
 
   it('renders without crashing', () => {
-    const tree = renderer.create(<App {...props} />)
+    const tree = renderer.create(<App {...props} />);
 
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders an error message when a network error occurs', () => {
     props.users.error = true;
-    const tree = renderer.create(<App {...props} />)
+    const tree = renderer.create(<App {...props} />);
 
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('App Component', () => {
         id: 1,
         name: 'foo'
       }
-    ]
+    ];
     const wrapper = shallow(<App {...props} />);
 
     expect(wrapper.find('User').length).toBe(1);

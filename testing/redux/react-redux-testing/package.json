@@ -1,5 +1,5 @@
 {
-  "name": "react-testing",
+  "name": "react-redux-testing",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,8 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
     "redux-promise-middleware": "^5.1.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "react-test-renderer": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
