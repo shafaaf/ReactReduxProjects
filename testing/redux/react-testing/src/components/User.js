@@ -7,6 +7,6 @@ const User = ({user}) => {
       {user.name}
     </li>
   )
-}
+};
 
 export default User;

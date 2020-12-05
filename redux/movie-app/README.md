@@ -4,4 +4,4 @@ https://medium.com/better-programming/a-simple-redux-tutorial-starter-complete-c
 https://github.com/01Clarian/ReduxMovieAppTutorial
 https://www.youtube.com/watch?v=x0t5woNQNK4
 
-Sets up redux thunk with usable with redux dev tools
+Uses redux thunk with usable with redux dev tools
