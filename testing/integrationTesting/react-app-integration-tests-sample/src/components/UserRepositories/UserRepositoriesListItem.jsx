@@ -7,7 +7,7 @@ import {
   ListItemText,
   ListItemSecondaryAction
 } from '@material-ui/core';
-import { GithubCircle } from 'mdi-material-ui';
+import { Github } from 'mdi-material-ui';
 import intl from 'react-intl-universal';
 
 export default function PublicRepositoryListItem({
@@ -29,7 +29,7 @@ export default function PublicRepositoryListItem({
             href={html_url}
             target="_blank"
           >
-            <GithubCircle title={intl.get('repositories.view')} />
+            <Github title={intl.get('repositories.view')} />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

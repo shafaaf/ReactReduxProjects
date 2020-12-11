@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Grid, TextField, InputAdornment } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { GithubCircle } from 'mdi-material-ui';
+import { Github } from 'mdi-material-ui';
 import intl from 'react-intl-universal';
 
 const GitHubUserInputProps = {
   startAdornment: (
     <InputAdornment position="start">
-      <GithubCircle />
+      <Github />
     </InputAdornment>
   ),
 };
