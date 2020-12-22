@@ -28,11 +28,11 @@ export default function UserSelectionForm({
   const handlenewUsernameChange = (e) => {
     const value = e.target.value;
     setNewUsername(value);
-  }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     setUsername(newUsername);
-  }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center">
