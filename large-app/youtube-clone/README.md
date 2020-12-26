@@ -14,3 +14,6 @@ TODO - Refactored to use hooks: https://youtu.be/-9M9CGSd69I?t=1969
 ```npm run start```
 
 11:12:00: Summary of video 1
+
+
+TODO: Fix the youtube api key issue
