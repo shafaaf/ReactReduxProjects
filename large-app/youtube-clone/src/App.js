@@ -49,7 +49,7 @@ class App extends React.Component {
 
       render() {
           const {selectedVideo, videos} = this.state;
-            return ( //ada
+            return (
                 <Grid style={{ justifyContent: "center" }} container spacing={10}>
                     <Grid item xs={11}>
                         <Grid container spacing={10}>
