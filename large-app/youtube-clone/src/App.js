@@ -25,16 +25,22 @@ class App extends React.Component {
 
     handleSubmit = async (searchTerm) => {
         console.log("searchTerm is: ", searchTerm);
-        const response = await youtube.get("search", {
-            params: {
-                part: "snippet",
-                maxResults: 5,
-                key: process.env.REACT_APP_API_KEY,
-                q: searchTerm
-            }
-        });
-        console.log("response is: ", response);
-
+        console.log("key is: ", process.env.REACT_APP_API_KEY);
+        let response;
+        try {
+            response = await youtube.get("search", {
+                params: {
+                    part: "snippet",
+                    maxResults: 5,
+                    key: process.env.REACT_APP_API_KEY,
+                    q: searchTerm
+                }
+            });
+        } catch (err) {
+            console.log("Fail: err is: ", err);
+            return;
+        }
+        console.log("Success: response is: ", response);
         this.setState({
             videos : response.data.items,
             selectedVideo: response.data.items[0]
