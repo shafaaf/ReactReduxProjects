@@ -1,7 +1,7 @@
 import {render, fireEvent, screen} from '@testing-library/react';
 import App from "./App";
 import Simulate from "@testing-library/user-event";
-import {wait} from "@testing-library/react";
+import {waitFor} from "@testing-library/react";
 import React from "react";
 
 test('entering a todo in form adds a todo', async () => {
@@ -14,7 +14,7 @@ test('entering a todo in form adds a todo', async () => {
     Simulate.click(getByText('Add'));
 
     // wait for todo to show up
-    await wait(() => getByText('My new todo'));
+    await waitFor(() => getByText('My new todo'));
 
     // make sure form is cleared
     expect(getByTestId('TodoForm-input').value).toEqual('');
