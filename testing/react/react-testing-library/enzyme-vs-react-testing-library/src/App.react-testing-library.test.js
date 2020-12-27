@@ -13,7 +13,7 @@ test('entering a todo in form adds a todo', async () => {
     // click Add
     Simulate.click(getByText('Add'));
 
-    // wait for Todo to show up
+    // wait for todo to show up
     await wait(() => getByText('My new todo'));
 
     // make sure form is cleared
