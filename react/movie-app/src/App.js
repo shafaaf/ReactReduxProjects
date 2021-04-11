@@ -14,7 +14,7 @@ function App() {
         selected: {}
     });
 
-    const apiUrl = "http://www.omdbapi.com/?apikey=" + process.env.REACT_APP_API_KEY;
+    const apiUrl = "https://www.omdbapi.com/?apikey=" + process.env.REACT_APP_API_KEY;
 
     const search = (e) => {
         if (e.key === "Enter") {
