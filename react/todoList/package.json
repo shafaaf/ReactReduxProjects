@@ -8,6 +8,7 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {

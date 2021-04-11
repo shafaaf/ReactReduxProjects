@@ -71,7 +71,7 @@ export default class  TodosListItem extends React.Component{
 	}
 
 	renderActionSection() {
-		if(this.state.isEditing){
+		if(this.state.isEditing) {
 			return ( // Return buttons (save, cancel) when editing
 				<td>
 					<button onClick = {this.onSaveClick.bind(this)}>Save</button>

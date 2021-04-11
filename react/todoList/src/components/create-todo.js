@@ -1,9 +1,9 @@
-//refs used to access specific react DOM elements
+// refs used to access specific react DOM elements
 
 import React from 'react';
 
 export default class CreateTodo extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       error: null
@@ -49,7 +49,7 @@ export default class CreateTodo extends React.Component {
       error: null
     });
     this.props.createTask(task);
-  	this.refs.createInput.value = '';	//empty after every empty
+  	this.refs.createInput.value = '';	// empty after every empty
   }
 
 
@@ -63,7 +63,7 @@ export default class CreateTodo extends React.Component {
     var todosLength = todos.length;
     console.log("todosLength is: ", todosLength);
     for(var i = 0;i<todosLength;i++){
-      if(todos[i]["task"] == task){
+      if(todos[i]["task"] === task){
         return "Duplicate task. Please enter again.";
       }
     }

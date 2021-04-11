@@ -9,7 +9,8 @@
 // also has a this binded to pass the task
 // If remove the "this" in this file, this refers to TodosListItem
 
-import React from 'react';
+import React, { Component } from 'react';
+
 import CreateTodo from './create-todo';
 import TodosList from './todos-list';
 
@@ -35,8 +36,6 @@ export default class App extends React.Component {
 
 	// Called when new task submitted in form
 	createTask(task) {
-		// console.log("createTask with task: ", task);
-		// console.log("this is: ", this);
 		this.state.todos.push({
 			task: task,
 			isCompleted: false
@@ -46,7 +45,7 @@ export default class App extends React.Component {
 		});
 	}
 
-	// Called when a task is clicked on
+	// toggle when a task is clicked on
 	toggleTask(task) {
 		console.log("At toggleTask. Task is: ", task);
 		console.log("This is: ", this);
@@ -90,7 +89,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>React todo app</h1>
+				<h1>React Todo App</h1>
 				<CreateTodo todos = {this.state.todos} createTask = {this.createTask.bind(this)}/>
 				<TodosList
 					todos = {this.state.todos}
