@@ -1,4 +1,4 @@
-## Movie app:
+## MovieList app:
 
 https://medium.com/better-programming/a-simple-redux-tutorial-starter-complete-code-example-9b2923572d71
 https://github.com/01Clarian/ReduxMovieAppTutorial
