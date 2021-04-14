@@ -1,6 +1,6 @@
-## Youtube clone
+## Youtube clone using React
 
-Video tutorial: l
+Video tutorial:
 Code: https://github.com/adrianhajdin/project_youtube_video_player
 
 TODO - Refactored to use hooks: https://youtu.be/-9M9CGSd69I?t=1969
