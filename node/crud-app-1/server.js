@@ -1,15 +1,44 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 
-app.use(express.static('public'));
-app.use(express.json());
-app.use('/api',require('./routes/api'));
+const corsOptions = {
+    origin: "http://localhost:8081"
+};
 
+app.use(cors(corsOptions));
 
-app.get('/api', (req, res) =>
-    res.send('Its working!'));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
 
-app.listen(process.env.port || 4000, function(){
-    console.log('now listening for requests');
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./models");
+db.mongoose
+    .connect(db.url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("Connected to the database!");
+    })
+    .catch(err => {
+        console.log("Cannot connect to the database!", err);
+        process.exit();
+    });
+
+// simple route
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to CRUD app 1." });
+});
+
+require("./routes/tutorial.routes")(app);
+
+// set port, listen for requests
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });
