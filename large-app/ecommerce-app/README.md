@@ -10,26 +10,7 @@ Code: https://github.com/basir/react-shopping-cart
 
 Has local storage use, connect, redux dev tools usage, async await
 
-Ecommerce page: http://localhost:3000/
-
-Admin page: http://localhost:3000/
- 
-Local MongoDB setup:
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
-
-```brew tap mongodb/brew```
-
-```brew install mongodb-community@4.4```
-
-Start MongoDB:
-
-```brew services start mongodb-community@4.4```
-
-Stop MongoDB:
-
-```brew services stop mongodb-community@4.4```
-
-Run service:
+Ecommerce page: http://localhost:3000/ 
 
 Start server
 
@@ -41,6 +22,7 @@ Run app
 
 To store data in the DB:
 - Open Postman and under body, paste in data.json as JSON type at POST /api/products
+- See https://www.youtube.com/watch?v=g2bR7cKX4Mg&list=PLeh2GWv22bmQHOAYllM8ycm3obDexyoLg&index=11&ab_channel=CodingwithBasir
 
 ## TODO
 Add in admin section by looking at Github code

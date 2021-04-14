@@ -8,10 +8,23 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Use this after the variable declaration
 
-mongoose.connect("mongodb://localhost:27017/react-shopping-cart-db", {
+const dotenv = require('dotenv');
+dotenv.config();
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSSWORD;
+const clusterUrl = process.env.CLUSTER_URL;
+
+const url = `mongodb+srv://${username}:${password}@${clusterUrl}/EcommerceApp`
+
+mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to the database!");
+}).catch(err => {
+    console.log("Cannot connect to the database!", err);
+    process.exit();
 });
 
 // Product related apis
@@ -81,7 +94,12 @@ app.delete("/api/orders/:id", async (req, res) => {
     res.send(order);
 });
 
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to ecommerce app" });
+});
+
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log("serve at http://localhost:5000");
+    console.log("Running server at http://localhost:5000");
 });
