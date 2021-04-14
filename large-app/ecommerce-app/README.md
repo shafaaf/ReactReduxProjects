@@ -1,5 +1,7 @@
 ## E-commerce app
 
+Uses React, Redux, Node.js, MongoDB
+
 Tutorial: https://www.youtube.com/watch?v=_pkBqnyxY0w&list=PLeh2GWv22bmQHOAYllM8ycm3obDexyoLg
 
 Demo: https://react-shopping-cart-final.herokuapp.com/
