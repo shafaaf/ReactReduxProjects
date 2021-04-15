@@ -1,9 +1,10 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>Hiz</h1>
-    </div>
-  );
-}
+import {Component} from "react";
+import Jumbotron from "./components/jumbotron";
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+        <Jumbotron/>
+    );
+  }
+}
