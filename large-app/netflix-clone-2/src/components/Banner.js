@@ -12,11 +12,24 @@ function Banner() {
             setMovie (request.data.results[randomIndex]);
             return request;
         }
-        //fetchData().then(() => console.log("hi" + movie));
-    });
+        fetchData().then(() => console.log(movie));
+    }, []);
 
     return (
         <div>
+            <header
+                className="banner"
+                style={{
+                    backgroundSize: "cover",
+                    backgroundImage: `url(https://www.irmi.com/images/default-source/article-images/aviation/boeing-737.jpg?sfvrsn=4)`,
+                    backgroundPosition: "center center"
+                }}
+
+            >
+                <div className="banner_contents">
+
+                </div>
+            </header>
 
         </div>
     );
