@@ -1,5 +1,6 @@
 ## Netflix clone 2
 
+Uses Tmdb api
 Tutorial from: https://www.youtube.com/watch?v=XtMThy8QKqU&t=2433s&ab_channel=CleverProgrammer
 Learning React + CSS
 

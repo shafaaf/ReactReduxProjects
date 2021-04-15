@@ -13,7 +13,7 @@ const Row = ({title, fetchUrl, isLargeRow}) => {
             const request = await axiosInstance.get(fetchUrl);
             setMovies(request.data.results);
         }
-        fetchData().then(() => console.log(movies));
+        fetchData();
 
     }, [fetchUrl]);
     return (
