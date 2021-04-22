@@ -1,9 +1,8 @@
-## Netflix clone 2
+## Netflix clone using React
 
 Uses Tmdb api
 Tutorial from: https://www.youtube.com/watch?v=XtMThy8QKqU&t=2433s&ab_channel=CleverProgrammer
-Learning React + CSS
 
-Did till: 1:54:00 - creating banner
+For learning React + CSS
 
-CSS sections for rows explained from 01:10:00
+Did till: 2:19:00 - starting creating navbar

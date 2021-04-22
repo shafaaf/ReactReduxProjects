@@ -2,6 +2,10 @@
     margin-left: 20px;
 }
 
+.row_name {
+ color: white;
+}
+
 .row_posters {
     display: flex;
     overflow-y: hidden;
