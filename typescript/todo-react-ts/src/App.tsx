@@ -3,7 +3,7 @@ import {TodoList} from "./TodoList";
 import {AddTodoForm} from "./AddTodoForm";
 
 const initialTodos: Array<Todo> = [
-    {text: "feed the cat", complete: true},
+    {text: "feed the cats", complete: true},
     {text: "write app", complete: false},
 ];
 
