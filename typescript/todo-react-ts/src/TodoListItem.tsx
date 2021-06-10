@@ -4,6 +4,7 @@ import "./TodoListItem.css"
 interface TodoListItemProps {
     todo: Todo,
     toggleTodo: ToggleTodo
+    key: number
 }
 
 export const TodoListItem: React.FC<TodoListItemProps> = ({todo, toggleTodo}) => {

@@ -22,8 +22,8 @@ const App: React.FC = () => {
         setTodos(newTodos);
     };
 
-    const addTodo: AddTodo = (newTodo) => {
-        if (newTodo.length == 0) {
+    const addTodo: AddTodo = (newTodo: String) => {
+        if (newTodo.length === 0) {
             return;
         }
         setTodos([...todos, {text: newTodo, complete: false}])

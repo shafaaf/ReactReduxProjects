@@ -10,8 +10,12 @@ export const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodo}) => {
     return (
         <ul>
             {
-                todos.map(todo => {
-                    return <TodoListItem todo = {todo} toggleTodo = {toggleTodo}/>;
+                todos.map((todo, i) => {
+                    return <TodoListItem
+                        todo = {todo}
+                        toggleTodo = {toggleTodo}
+                        key = {i}
+                    />;
                 })
             }
         </ul>
