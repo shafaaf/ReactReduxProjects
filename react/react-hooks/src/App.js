@@ -13,7 +13,11 @@ const App = () => {
     const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
 
     useEffect(() => {
-        if (gameState.victory) document.title = 'Victory!';
+        if (gameState.victory) {
+            document.title = 'Victory!';
+        } else {
+            document.title = 'Playing!';
+        }
     });
 
     const chooseSnippet = snippetIndex => () => {
@@ -54,7 +58,7 @@ const App = () => {
             <hr />
             {
                 SNIPPETS.map((SNIPPET, index) => (
-                    <button onClick={chooseSnippet(index)} key={index}>
+                    <button key={index} onClick={chooseSnippet(index)}>
                         {SNIPPET.substring(0, 10)}...
                     </button>
                 ))
