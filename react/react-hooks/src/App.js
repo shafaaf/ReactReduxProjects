@@ -13,6 +13,7 @@ const App = () => {
     const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
 
     useEffect(() => {
+        console.log("useEffect!");
         if (gameState.victory) {
             document.title = 'Victory!';
         } else {
@@ -28,7 +29,6 @@ const App = () => {
 
     const updateUserText = event => {
         setUserText(event.target.value);
-
         if (event.target.value === snippet) {
             setGameState({
                 ...gameState,
@@ -36,7 +36,6 @@ const App = () => {
                 endTime: new Date().getTime()
             });
         }
-
     };
 
     const millisToMinutesAndSeconds = (startTime, endTime) => {
@@ -52,7 +51,8 @@ const App = () => {
             <hr />
             <h3>Snippet</h3>
             {snippet}
-            <h4>{gameState.victory ? `Done! 🎉 Time: ${millisToMinutesAndSeconds(gameState.startTime, gameState.endTime)}s` : null}</h4>
+            <h4>{gameState.victory ? `Done! 🎉 Time: 
+            ${millisToMinutesAndSeconds(gameState.startTime, gameState.endTime)}s` : null}</h4>
 
             <input value={userText} onChange={updateUserText} />
             <hr />
