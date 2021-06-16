@@ -14,9 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
+const createData = (name, calories, fat, carbs, protein) => ({name, calories, fat, carbs, protein});
 
 const rows = [
     createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
@@ -26,7 +24,7 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function SimpleTable() {
+export default () => {
     const classes = useStyles();
 
     return (
