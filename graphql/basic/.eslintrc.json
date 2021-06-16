@@ -16,6 +16,8 @@
     "no-shadow": "off",
     "no-restricted-syntax": ["error", "ForInStatement"],
     "comma-dangle": "off",
-    "array-callback-return": "off"
+    "array-callback-return": "off",
+    "no-use-before-define": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }
