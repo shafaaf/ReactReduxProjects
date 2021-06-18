@@ -9,9 +9,9 @@ const { usersData, hobbiesData, postsData } = require('./data');
 // Create types
 const UserType = new GraphQLObjectType({
     name: 'User',
-    description: 'Documentation for user...',
+    description: 'Description for user',
     fields: () => ({
-        id: { type: GraphQLInt },
+        id: { type: GraphQLID },
         name: { type: GraphQLString },
         age: { type: GraphQLInt },
         profession: { type: GraphQLString }
@@ -20,11 +20,21 @@ const UserType = new GraphQLObjectType({
 
 const HobbyType = new GraphQLObjectType({
     name: 'Hobby',
-    description: 'Documentation for hobby...',
+    description: 'Description for hobby',
     fields: () => ({
-        id: { type: GraphQLInt },
+        id: { type: GraphQLID },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
+        userId: { type: GraphQLInt }
+    })
+});
+
+const PostType = new GraphQLObjectType({
+    name: 'Post',
+    description: 'Description for Post',
+    fields: () => ({
+        id: { type: GraphQLID },
+        comment: { type: GraphQLString },
         userId: { type: GraphQLInt }
     })
 });
@@ -47,6 +57,13 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: GraphQLID }
             },
             resolve: (parent, args) => _.find(hobbiesData, { id: args.id })
+        },
+        post: {
+            type: PostType,
+            args: {
+                id: { type: GraphQLID }
+            },
+            resolve: (parent, args) => _.find(postsData, { id: args.id })
         }
     })
 });
