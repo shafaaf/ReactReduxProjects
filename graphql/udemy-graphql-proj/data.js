@@ -39,7 +39,7 @@ exports.hobbiesData = [
 exports.postsData = [
     { id: '1', comment: 'Building a Mind', userId: '1' },
     { id: '2', comment: 'GraphQL is Amazing', userId: '1' },
-    { id: '3', comment: 'How to Change the World', userId: '19' },
-    { id: '4', comment: 'How to Change the World', userId: '211' },
+    { id: '3', comment: 'T2 is the greatest movie', userId: '19' },
+    { id: '4', comment: 'How to Change the World!', userId: '211' },
     { id: '5', comment: 'How to Change the World', userId: '1' }
 ];
