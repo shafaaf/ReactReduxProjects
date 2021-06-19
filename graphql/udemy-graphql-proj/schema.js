@@ -80,6 +80,35 @@ const RootQuery = new GraphQLObjectType({
     })
 });
 
+// Mutations
+const RootMutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    description: 'This is the root mutation',
+    fields: () => ({
+        createUser: { // TODO: Add id field
+            type: UserType,
+            description: 'Create a single book',
+            args: {
+                // id: { type: GraphQLID },
+                name: { type: GraphQLString },
+                age: { type: GraphQLInt },
+                profession: { type: GraphQLString },
+            },
+            resolve: (parent, args) => {
+                const user = {
+                    // id: usersData.length + 1,
+                    name: args.name,
+                    age: args.age,
+                    profession: args.profession
+                };
+                // books.push(user);
+                return user;
+            }
+        }
+    })
+});
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: RootMutationType
 });
