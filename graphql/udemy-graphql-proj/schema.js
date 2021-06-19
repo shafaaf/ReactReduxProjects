@@ -33,7 +33,11 @@ const HobbyType = new GraphQLObjectType({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        userId: { type: GraphQLInt }
+        userId: { type: GraphQLInt },
+        user: {
+            type: UserType,
+            resolve: (parent) => _.find(usersData, { id: parent.userId })
+        }
     })
 });
 
@@ -103,6 +107,44 @@ const RootMutationType = new GraphQLObjectType({
                 };
                 // books.push(user);
                 return user;
+            }
+        },
+        createPost: {
+            type: PostType,
+            description: 'Create a single post',
+            args: {
+                // id: { type: GraphQLID },
+                comment: { type: GraphQLString },
+                userId: { type: GraphQLInt }
+            },
+            resolve: (parent, args) => {
+                const post = {
+                    id: postsData.length + 1,
+                    comment: args.comment,
+                    userId: args.userId
+                };
+                // postsData.push(post);
+                return post;
+            }
+        },
+        createHobby: {
+            type: HobbyType,
+            description: 'Create a single hobby',
+            args: {
+                // id: { type: GraphQLID },
+                title: { type: GraphQLString },
+                description: { type: GraphQLString },
+                userId: { type: GraphQLInt }
+            },
+            resolve: (parent, args) => {
+                const hobby = {
+                    id: postsData.length + 1,
+                    title: args.title,
+                    description: args.description,
+                    userId: args.userId
+                };
+                // hobbiesData.push(hobby);
+                return hobby;
             }
         }
     })
