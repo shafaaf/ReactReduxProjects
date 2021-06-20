@@ -1,4 +1,4 @@
-## Youtube clone using React
+## Youtube clone using React and Material UI
 
 Video tutorial:
 Code: https://github.com/adrianhajdin/project_youtube_video_player
@@ -20,4 +20,3 @@ https://www.youtube.com/watch?v=EAyo3_zJj5c&t=60s&ab_channel=CodingShiksha
 See error of calling api by calling api through browser and see error not just error code
 Might need new api key / project even
 
-Not good example of usage of Material UI
