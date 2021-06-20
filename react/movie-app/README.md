@@ -7,7 +7,7 @@ Code: https://github.com/TylerPottsDev/react-movie-database
 ## Setup 
 ```npm install```
 ```
-    Insert api key in .env file in root dir like from omdbapi in email:
+    Insert api key in .env file in root dir like from omdbapi in email like the following:
         REACT_APP_API_KEY = '#######'
 ```
 ```npm run start```
