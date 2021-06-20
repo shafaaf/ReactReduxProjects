@@ -12,6 +12,16 @@ Has local storage use, connect, redux dev tools usage, async await
 
 Ecommerce page: http://localhost:3000/ 
 
+For setup, put in .env file in root folder
+
+```
+MONGODB_USERNAME = 'sha***'
+MONGODB_PASSSWORD = 'yn***p5'
+CLUSTER_URL = 'cluster0***'
+```
+Get these from memos doc, search "mongo"
+
+
 Start server
 
 ``` npm run server```
