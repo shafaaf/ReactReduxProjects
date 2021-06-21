@@ -3,7 +3,7 @@ import './App.css';
 import List from "./components/List";
 import AddToList from "./components/AddToList";
 
-interface IState {
+export interface IState {
     people: {
         name: string,
         age: number,
@@ -30,8 +30,8 @@ const App = (): JSX.Element => {
     return (
         <div className="App">
             <h1>People invited to my party</h1>
-            <List people = {people}/>
-            <AddToList/>
+            <List people={people}/>
+            <AddToList people={people} setPeople={setPeople} />
         </div>
     );
 };
