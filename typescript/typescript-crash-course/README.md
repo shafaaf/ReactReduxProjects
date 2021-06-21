@@ -1,6 +1,6 @@
 ### Typescript-react crash course
 
-Explains usefuless of Typescript very well using examples in the code.
+Explains usefulness of Typescript very well using examples in the code.
 
 Shows both JSX.Element and React.FC
 

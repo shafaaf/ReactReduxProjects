@@ -11,7 +11,6 @@ interface IProps {
 
 // can also do like JSX.Element
 const List: React.FC <IProps> = ({people}) => {
-
     const renderList = (): JSX.Element[] => {
         return people.map((person, key) => {
             return (

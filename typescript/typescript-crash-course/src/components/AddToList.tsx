@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {IState as Props} from '../App';
 
+// Using  square bracket on interface can get type
 interface IProps {
     people: Props["people"],
     setPeople:  React.Dispatch<React.SetStateAction<Props["people"]>>
