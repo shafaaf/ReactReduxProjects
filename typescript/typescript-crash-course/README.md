@@ -1,5 +1,7 @@
 ### Typescript-react crash course
 
+Explains usefuless of Typescript very well using examples in the code.
+
 Tutorial: https://www.youtube.com/watch?v=jrKcJxF0lAU&t=3610s&ab_channel=LaithHarb
 Code: https://github.com/harblaith7/React-With-TypeScript-Crash-Course
 
