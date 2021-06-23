@@ -162,7 +162,6 @@ const RootMutationType = new GraphQLObjectType({
                     userId: args.userId
                 });
                 hobby.save();
-                // return new Error('Oops!');
                 return hobby;
             }
         }
