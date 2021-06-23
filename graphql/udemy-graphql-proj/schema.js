@@ -6,7 +6,6 @@ const User = require('./model/user');
 const Hobby = require('./model/hobby');
 const Post = require('./model/post');
 
-
 const { usersData, hobbiesData, postsData } = require('./data');
 
 // Create types
@@ -104,7 +103,7 @@ const RootMutationType = new GraphQLObjectType({
     name: 'Mutation',
     description: 'This is the root mutation',
     fields: () => ({
-        createUser: { // TODO: Add id field
+        createUser: {
             type: UserType,
             description: 'Create a single book',
             args: {
@@ -114,13 +113,21 @@ const RootMutationType = new GraphQLObjectType({
                 profession: { type: GraphQLString },
             },
             resolve: (parent, args) => {
-                const user = {
+                // save to mongodb
+                const user = new User({
                     // id: usersData.length + 1,
                     name: args.name,
                     age: args.age,
                     profession: args.profession
-                };
-                // books.push(user);
+                });
+
+                // TODO: unsure why cant do this
+                // user.save()
+                // .then(() => {
+                //     init()
+                // .then(() => user);
+                // });
+                user.save();
                 return user;
             }
         },
@@ -163,6 +170,16 @@ const RootMutationType = new GraphQLObjectType({
             }
         }
     })
+});
+
+const init = async () => {
+    console.log(1);
+    await sleep(5000);
+    console.log(2);
+};
+
+const sleep = (ms) => new Promise((resolve) => {
+    setTimeout(resolve, ms);
 });
 
 module.exports = new GraphQLSchema({
