@@ -1,8 +1,11 @@
 const {
     GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID, GraphQLList
 } = require('graphql');
-
 const _ = require('lodash');
+const User = require('./model/user');
+const Hobby = require('./model/hobby');
+const Post = require('./model/post');
+
 
 const { usersData, hobbiesData, postsData } = require('./data');
 

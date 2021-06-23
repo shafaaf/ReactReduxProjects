@@ -12,4 +12,10 @@ CLUSTER_URL = 'cluster0***'
 ```
 Get these from memos doc, search "mongo"
 
+Base api url:
+```
+http://localhost:3000/api/tutorials
+```
+Rest in tutorial.routes.js.
+
 TODO Pagination, filtering: https://bezkoder.com/node-js-mongodb-pagination/

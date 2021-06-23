@@ -1,0 +1,7 @@
+For mongodb setup, put in .env file in root folder
+```
+MONGODB_USERNAME = 'sha***'
+MONGODB_PASSSWORD = 'yn***p5'
+CLUSTER_URL = 'cluster0***'
+```
+Get these from memos doc, search "mongo"
