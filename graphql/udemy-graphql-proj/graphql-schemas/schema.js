@@ -2,11 +2,11 @@ const {
     GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID, GraphQLList
 } = require('graphql');
 const _ = require('lodash');
-const User = require('./model/user');
-const Hobby = require('./model/hobby');
-const Post = require('./model/post');
+const User = require('../mongoose-model/user');
+const Hobby = require('../mongoose-model/hobby');
+const Post = require('../mongoose-model/post');
 
-const { usersData, hobbiesData, postsData } = require('./data');
+const { usersData, hobbiesData, postsData } = require('../data');
 
 // Create types
 const UserType = new GraphQLObjectType({

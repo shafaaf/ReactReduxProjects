@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const dbConfig = require('./config/db.config');
 
-const schema = require('./schema');
-// const testSchema = require('./types_schema');
+const schema = require('./graphql-schemas/schema');
+// const testSchema = require('./graphql-schemas/types_schema');
 
 const port = 4000;
 
