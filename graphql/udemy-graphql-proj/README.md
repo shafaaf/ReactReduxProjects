@@ -5,3 +5,8 @@ MONGODB_PASSSWORD = 'yn***p5'
 CLUSTER_URL = 'cluster0***'
 ```
 Get these from memos doc, search "mongo"
+
+GraphQL UI:
+```
+http://localhost:4000/graphql
+```
