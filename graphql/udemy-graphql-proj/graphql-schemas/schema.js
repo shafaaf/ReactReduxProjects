@@ -35,7 +35,7 @@ const HobbyType = new GraphQLObjectType({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        userId: { type: GraphQLInt },
+        userId: { type: GraphQLString },
         user: {
             type: UserType,
             resolve: (parent) => _.find(usersData, { id: parent.userId })
@@ -49,7 +49,7 @@ const PostType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         comment: { type: GraphQLString },
-        userId: { type: GraphQLInt },
+        userId: { type: GraphQLString },
         user: {
             type: UserType,
             resolve: (parent) => _.find(usersData, { id: parent.userId })
@@ -107,15 +107,13 @@ const RootMutationType = new GraphQLObjectType({
             type: UserType,
             description: 'Create a single book',
             args: {
-                // id: { type: GraphQLID },
                 name: { type: GraphQLString },
                 age: { type: GraphQLInt },
                 profession: { type: GraphQLString },
             },
             resolve: (parent, args) => {
-                // save to mongodb
+                // generates id and save to mongodb
                 const user = new User({
-                    // id: usersData.length + 1,
                     name: args.name,
                     age: args.age,
                     profession: args.profession
@@ -135,17 +133,16 @@ const RootMutationType = new GraphQLObjectType({
             type: PostType,
             description: 'Create a single post',
             args: {
-                // id: { type: GraphQLID },
                 comment: { type: GraphQLString },
-                userId: { type: GraphQLInt }
+                userId: { type: GraphQLString }
             },
             resolve: (parent, args) => {
-                const post = {
-                    id: postsData.length + 1,
+                // generates id and save to mongodb
+                const post = new Post({
                     comment: args.comment,
                     userId: args.userId
-                };
-                // postsData.push(post);
+                });
+                post.save();
                 return post;
             }
         },
@@ -153,34 +150,33 @@ const RootMutationType = new GraphQLObjectType({
             type: HobbyType,
             description: 'Create a single hobby',
             args: {
-                // id: { type: GraphQLID },
                 title: { type: GraphQLString },
                 description: { type: GraphQLString },
-                userId: { type: GraphQLInt }
+                userId: { type: GraphQLString }
             },
             resolve: (parent, args) => {
-                const hobby = {
-                    id: postsData.length + 1,
+                // generates id and save to mongodb
+                const hobby = new Hobby({
                     title: args.title,
                     description: args.description,
                     userId: args.userId
-                };
-                // hobbiesData.push(hobby);
+                });
+                hobby.save();
+                // return new Error('Oops!');
                 return hobby;
             }
         }
     })
 });
 
-const init = async () => {
-    console.log(1);
-    await sleep(5000);
-    console.log(2);
-};
-
-const sleep = (ms) => new Promise((resolve) => {
-    setTimeout(resolve, ms);
-});
+// const init = async () => {
+//     console.log(1);
+//     await sleep(5000);
+//     console.log(2);
+// };
+// const sleep = (ms) => new Promise((resolve) => {
+//     setTimeout(resolve, ms);
+// });
 
 module.exports = new GraphQLSchema({
     query: RootQuery,
