@@ -1,6 +1,7 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const dbConfig = require('./config/db.config');
 
@@ -11,12 +12,15 @@ const port = 4000;
 
 const app = express();
 
+app.use(cors());
+
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }));
 
 const start = async () => {
+    mongoose.set('useFindAndModify', false);
     mongoose.connect(dbConfig.url, {
         useNewUrlParser: true,
         useUnifiedTopology: true

@@ -1,5 +1,6 @@
 const {
-    GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID, GraphQLList
+    GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString,
+    GraphQLID, GraphQLList, GraphQLNonNull
 } = require('graphql');
 
 const User = require('../mongoose-model/user');
@@ -58,8 +59,8 @@ const RootMutationType = new GraphQLObjectType({
             type: UserType,
             description: 'Create a single book',
             args: {
-                name: { type: GraphQLString },
-                age: { type: GraphQLInt },
+                name: { type: GraphQLNonNull(GraphQLString) },
+                age: { type: GraphQLNonNull(GraphQLInt) },
                 profession: { type: GraphQLString },
             },
             resolve: (parent, args) => {
@@ -80,12 +81,38 @@ const RootMutationType = new GraphQLObjectType({
                 return user;
             }
         },
+        updateUser: {
+            type: UserType,
+            description: 'Create a single book',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) },
+                name: { type: GraphQLString },
+                age: { type: GraphQLInt },
+                profession: { type: GraphQLString },
+            },
+            resolve: (parent, args) => {
+                // TODO: Maybe use $set in mongoose findByIdAndUpdate
+                const buildUserObjectFromAQuery = (query) => ({
+                    ...query.id && { id: query.id },
+                    ...query.name && { name: query.name },
+                    ...query.age && { age: query.age },
+                    ...query.profession && { profession: query.profession }
+                });
+                const mongooseArgs = buildUserObjectFromAQuery(args);
+                return User.findByIdAndUpdate(
+                    args.id,
+                    {
+                        ...mongooseArgs
+                    }, { new: true }
+                );
+            }
+        },
         createPost: {
             type: PostType,
             description: 'Create a single post',
             args: {
-                comment: { type: GraphQLString },
-                userId: { type: GraphQLString }
+                comment: { type: GraphQLNonNull(GraphQLString) },
+                userId: { type: GraphQLNonNull(GraphQLString) }
             },
             resolve: (parent, args) => {
                 // generates id and save to mongodb
@@ -101,9 +128,9 @@ const RootMutationType = new GraphQLObjectType({
             type: HobbyType,
             description: 'Create a single hobby',
             args: {
-                title: { type: GraphQLString },
-                description: { type: GraphQLString },
-                userId: { type: GraphQLString }
+                title: { type: GraphQLNonNull(GraphQLString) },
+                description: { type: GraphQLNonNull(GraphQLString) },
+                userId: { type: GraphQLNonNull(GraphQLString) }
             },
             resolve: (parent, args) => {
                 // generates id and save to mongodb
