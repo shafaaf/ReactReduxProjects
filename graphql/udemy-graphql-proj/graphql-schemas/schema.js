@@ -1,7 +1,6 @@
 const {
     GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID, GraphQLList
 } = require('graphql');
-const _ = require('lodash');
 const User = require('../mongoose-model/user');
 const Hobby = require('../mongoose-model/hobby');
 const Post = require('../mongoose-model/post');
@@ -35,7 +34,7 @@ const HobbyType = new GraphQLObjectType({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        userId: { type: GraphQLString },
+        userId: { type: GraphQLString }, // TODO: Unsure about this.
         user: {
             type: UserType,
             resolve: (parent) => User.findById(parent.userId)
@@ -65,7 +64,7 @@ const RootQuery = new GraphQLObjectType({
         user: {
             type: UserType,
             args: {
-                id: { type: GraphQLString }
+                id: { type: GraphQLString } // TODO: Unsure
             },
             resolve: (parent, args) => User.findById(args.id)
         },
@@ -76,13 +75,16 @@ const RootQuery = new GraphQLObjectType({
         hobby: {
             type: HobbyType,
             args: {
-                id: { type: GraphQLID }
+                id: { type: GraphQLID } // TODO: Unsure
             },
             resolve: (parent, args) => Hobby.findById(args.id)
         },
-        hobbies: {
+        hobbies: { // all hobbies of a person
             type: GraphQLList(HobbyType),
-            resolve: () => Hobby.find({})
+            args: {
+                id: { type: GraphQLID } // TODO: Unsure
+            },
+            resolve: (parent, args) => Hobby.find({ userId: args.id })
         },
         post: {
             type: PostType,
