@@ -10,6 +10,7 @@ const Post = require('../mongoose-model/post');
 const { UserType, PostType, HobbyType } = require('../types');
 
 // Root query
+// TODO: Unsure how to use promise.then in resolvers in queries and mutation
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     description: 'This is the root query',
@@ -57,7 +58,7 @@ const RootMutationType = new GraphQLObjectType({
     fields: () => ({
         createUser: {
             type: UserType,
-            description: 'Create a single book',
+            description: 'Create a single user',
             args: {
                 name: { type: GraphQLNonNull(GraphQLString) },
                 age: { type: GraphQLNonNull(GraphQLInt) },
@@ -83,7 +84,7 @@ const RootMutationType = new GraphQLObjectType({
         },
         updateUser: {
             type: UserType,
-            description: 'Create a single book',
+            description: 'Updates a single user',
             args: {
                 id: { type: GraphQLNonNull(GraphQLString) },
                 name: { type: GraphQLString },
@@ -107,6 +108,23 @@ const RootMutationType = new GraphQLObjectType({
                 );
             }
         },
+        removeUser: {
+            type: UserType,
+            description: 'Removes a single user',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) }
+            },
+            resolve: (parent, args) => {
+                // TODO: Unsure how to use promise.then here
+                const removedUser = User.findByIdAndRemove(
+                    args.id
+                ).exec();
+                if (!removedUser) {
+                    return new Error('Error removing user');
+                }
+                return removedUser;
+            }
+        },
         createPost: {
             type: PostType,
             description: 'Create a single post',
@@ -122,6 +140,36 @@ const RootMutationType = new GraphQLObjectType({
                 });
                 post.save();
                 return post;
+            }
+        },
+        updatePost: {
+            type: PostType,
+            description: 'Updates a single post',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) },
+                comment: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve: (parent, args) => Post.findByIdAndUpdate(
+                args.id,
+                {
+                    comment: args.comment
+                }, { new: true }
+            )
+        },
+        removePost: {
+            type: PostType,
+            description: 'Removes a single post',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) }
+            },
+            resolve: (parent, args) => {
+                const removedPost = Post.findByIdAndRemove(
+                    args.id
+                ).exec();
+                if (!removedPost) {
+                    return new Error('Error removing user');
+                }
+                return removedPost;
             }
         },
         createHobby: {
