@@ -1,99 +1,48 @@
 const {
     GraphQLSchema, GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID, GraphQLList
 } = require('graphql');
+
 const User = require('../mongoose-model/user');
 const Hobby = require('../mongoose-model/hobby');
 const Post = require('../mongoose-model/post');
 
-const { usersData, hobbiesData, postsData } = require('../data');
-
-// Create types
-const UserType = new GraphQLObjectType({
-    name: 'User',
-    description: 'Description for user',
-    fields: () => ({
-        id: { type: GraphQLID },
-        name: { type: GraphQLString },
-        age: { type: GraphQLInt },
-        profession: { type: GraphQLString },
-        posts: {
-            type: GraphQLList(PostType),
-            resolve: (parent) => Post.find({ userId: parent.id })
-        },
-        hobbies: {
-            type: GraphQLList(HobbyType),
-            resolve: (parent) => Hobby.find({ userId: parent.id })
-        }
-    })
-});
-
-const HobbyType = new GraphQLObjectType({
-    name: 'Hobby',
-    description: 'Description for hobby',
-    fields: () => ({
-        id: { type: GraphQLID },
-        title: { type: GraphQLString },
-        description: { type: GraphQLString },
-        userId: { type: GraphQLString }, // TODO: Unsure about this.
-        user: {
-            type: UserType,
-            resolve: (parent) => User.findById(parent.userId)
-        }
-    })
-});
-
-const PostType = new GraphQLObjectType({
-    name: 'Post',
-    description: 'Description for Post',
-    fields: () => ({
-        id: { type: GraphQLID },
-        comment: { type: GraphQLString },
-        userId: { type: GraphQLString },
-        user: {
-            type: UserType,
-            resolve: (parent) => User.findById(parent.userId)
-        }
-    })
-});
+const { UserType, PostType, HobbyType } = require('../types');
 
 // Root query
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     description: 'This is the root query',
     fields: () => ({
-        user: {
+        user: { // get user by id
             type: UserType,
             args: {
-                id: { type: GraphQLString } // TODO: Unsure
+                id: { type: GraphQLID }
             },
             resolve: (parent, args) => User.findById(args.id)
         },
-        users: {
+        users: { // get all users
             type: GraphQLList(UserType),
             resolve: () => User.find({})
         },
-        hobby: {
+        hobby: { // get hobby by id
             type: HobbyType,
             args: {
-                id: { type: GraphQLID } // TODO: Unsure
+                id: { type: GraphQLID }
             },
             resolve: (parent, args) => Hobby.findById(args.id)
         },
         hobbies: { // all hobbies of a person
             type: GraphQLList(HobbyType),
-            args: {
-                id: { type: GraphQLID } // TODO: Unsure
-            },
-            resolve: (parent, args) => Hobby.find({ userId: args.id })
+            resolve: () => Hobby.find({})
         },
-        post: {
+        post: { // get post by id
             type: PostType,
             args: {
                 id: { type: GraphQLID }
             },
             resolve: (parent, args) => Post.findById(args.id)
         },
-        posts: {
+        posts: { // get all posts
             type: GraphQLList(PostType),
             resolve: () => Post.find({})
         }
