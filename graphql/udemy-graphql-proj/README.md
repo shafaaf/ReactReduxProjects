@@ -1,3 +1,6 @@
+## Udemy graphqQL course
+From: https://www.udemy.com/course/aws-appsync-amplify-with-react-graphql-course/
+
 For mongodb setup, put in .env file in root folder
 ```
 MONGODB_USERNAME = 'sha***'
