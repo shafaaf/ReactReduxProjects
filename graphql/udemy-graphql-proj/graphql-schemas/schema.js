@@ -167,7 +167,7 @@ const RootMutationType = new GraphQLObjectType({
                     args.id
                 ).exec();
                 if (!removedPost) {
-                    return new Error('Error removing user');
+                    return new Error('Error removing post');
                 }
                 return removedPost;
             }
@@ -189,6 +189,39 @@ const RootMutationType = new GraphQLObjectType({
                 });
                 hobby.save();
                 return hobby;
+            }
+        },
+        updateHobby: {
+            type: HobbyType,
+            description: 'Updates a single hobby',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) },
+                title: { type: GraphQLNonNull(GraphQLString) },
+                description: { type: GraphQLNonNull(GraphQLString) }
+            },
+
+            resolve: (parent, args) => Hobby.findByIdAndUpdate(
+                args.id,
+                {
+                    title: args.title,
+                    description: args.description
+                }, { new: true }
+            )
+        },
+        removeHobby: {
+            type: HobbyType,
+            description: 'Removes a single hobby',
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) }
+            },
+            resolve: (parent, args) => {
+                const removedHobby = Hobby.findByIdAndRemove(
+                    args.id
+                ).exec();
+                if (!removedHobby) {
+                    return new Error('Error removing hobby');
+                }
+                return removedHobby;
             }
         }
     })
